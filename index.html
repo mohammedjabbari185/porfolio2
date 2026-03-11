@@ -1,332 +1,2705 @@
-
-<!DOCTYPE html> 
-<html lang="fr">
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio Mohamed</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fatima-Zahra ER-RKABI · Ingénieure Minière & Auditrice Interne</title>
+<meta name="description" content="Ingénieure d'État EMI, spécialisée en génie minier souterrain et auditrice interne corporate chez Managem Group.">
+<meta property="og:title" content="Fatima-Zahra ER-RKABI · Portfolio">
+<meta property="og:description" content="Ingénieure Minière & Auditrice Interne Corporate · Managem Group">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   DESIGN SYSTEM — TOKEN MAP
+═══════════════════════════════════════════════════════════════ */
+:root{
+  --g:#B8843A;--gl:#D4A85C;--gll:#ECC880;
+  --gdim:rgba(184,132,58,.13);--gglow:rgba(184,132,58,.35);
+  --t:#20B39A;--tdim:rgba(32,179,154,.1);--tglow:rgba(32,179,154,.28);
+  --ruby:#BE3F46;
+  --ease:cubic-bezier(.23,1,.32,1);
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --snappy:cubic-bezier(.7,0,.3,1);
+  --r8:8px;--r12:12px;--r16:16px;--r20:20px;--r28:28px;
+}
+[data-theme="dark"]{
+  --b0:#060810;--b1:#0A0D15;--b2:#0E1220;--b3:#13182A;--b4:#192035;
+  --s0:#1C2438;--s1:#222C44;--s2:#283450;
+  --tx:#EDE6DA;--tx2:#96A0B5;--tx3:#4E596E;--hd:#F5EFE4;
+  --nav:rgba(6,8,16,.9);--sh:0 24px 60px rgba(0,0,0,.65);
+  --bd:rgba(184,132,58,.14);--bd2:rgba(255,255,255,.05);
+  --noise-op:.025;
+}
+[data-theme="light"]{
+  --b0:#F7F4EF;--b1:#F1ECE4;--b2:#EAE4DA;--b3:#E2DAD0;--b4:#D8CFC4;
+  --s0:#FFFFFF;--s1:#F8F4EE;--s2:#EFE8DF;
+  --tx:#18160F;--tx2:#48423A;--tx3:#8A7E74;--hd:#0E0C08;
+  --nav:rgba(247,244,239,.94);--sh:0 24px 60px rgba(80,60,20,.1);
+  --bd:rgba(140,100,30,.18);--bd2:rgba(0,0,0,.05);
+  --noise-op:.04;
+}
 
+/* ═══════════════════════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:'DM Sans',sans-serif;
+  background:var(--b0);color:var(--tx);
+  overflow-x:hidden;cursor:none;
+  transition:background .6s var(--ease),color .6s var(--ease)
+}
+body.loading{overflow:hidden}
+::selection{background:var(--g);color:#000}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+img{display:block;max-width:100%;height:auto}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:2px}
+::-webkit-scrollbar-track{background:var(--b0)}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--g),var(--t))}
+
+/* ═══════════════════════════════════════════════════════════════
+   NOISE TEXTURE OVERLAY (premium depth effect)
+═══════════════════════════════════════════════════════════════ */
+body::before{
+  content:'';position:fixed;inset:0;z-index:9990;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size:180px 180px;
+  opacity:var(--noise-op);
+  mix-blend-mode:overlay;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL PROGRESS BAR
+═══════════════════════════════════════════════════════════════ */
+#prog{
+  position:fixed;top:0;left:0;height:2px;width:0;z-index:9999;
+  background:linear-gradient(90deg,var(--g),var(--t),var(--g));
+  transition:width .1s linear;box-shadow:0 0 12px var(--gglow);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LOADER
+═══════════════════════════════════════════════════════════════ */
+#loader{
+  position:fixed;inset:0;z-index:9998;background:var(--b0);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.8rem
+}
+#loader.out{animation:loaderOut .9s var(--ease) forwards}
+@keyframes loaderOut{to{opacity:0;visibility:hidden;pointer-events:none}}
+.ld-logo{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4.5vw,3rem);
+  font-weight:300;color:var(--hd);letter-spacing:.22em;text-transform:uppercase;
+  opacity:0;animation:ldIn .8s .2s var(--ease) forwards
+}
+.ld-logo b{color:var(--g);font-weight:900}
+@keyframes ldIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.ld-ring{width:56px;height:56px;opacity:0;animation:ldIn .8s .5s ease forwards}
+.ld-ring svg{width:100%;height:100%;animation:ldSpin 1.8s linear infinite}
+@keyframes ldSpin{to{transform:rotate(360deg)}}
+.ld-ring circle{fill:none;stroke:var(--bd2);stroke-width:1.5}
+.ld-ring .arc{stroke:var(--g);stroke-dasharray:100 251;stroke-linecap:round;animation:arcDash 1.8s linear infinite}
+@keyframes arcDash{to{stroke-dashoffset:-251}}
+.ld-counter{
+  font-family:'Fira Code',monospace;font-size:.75rem;color:var(--tx3);
+  letter-spacing:.18em;opacity:0;animation:ldIn .8s .6s ease forwards
+}
+.ld-tagline{
+  font-size:.65rem;color:var(--tx3);letter-spacing:.2em;text-transform:uppercase;
+  opacity:0;animation:ldIn .8s .7s ease forwards
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════════════════════════════════════ */
+#cur{
+  position:fixed;width:6px;height:6px;background:var(--g);
+  border-radius:50%;pointer-events:none;z-index:9997;
+  mix-blend-mode:difference;transition:transform .1s;will-change:left,top;
+}
+#cur-o{
+  position:fixed;width:32px;height:32px;border:1.5px solid var(--g);
+  border-radius:50%;pointer-events:none;z-index:9996;opacity:.55;
+  transition:width .35s var(--ease),height .35s var(--ease),opacity .35s,border-color .35s,background .35s;
+  will-change:left,top;
+}
+#cur-o.big{width:56px;height:56px;opacity:.9;border-color:var(--t)}
+#cur-o.inv{background:rgba(184,132,58,.1)}
+#cur-o.hidden{opacity:0}
+
+/* ═══════════════════════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════════════════════ */
+#nav{
+  position:fixed;inset:0 0 auto;height:66px;z-index:500;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3.5rem;
+  background:var(--nav);
+  backdrop-filter:blur(32px) saturate(2);
+  border-bottom:1px solid var(--bd);
+  transition:all .45s var(--ease);
+}
+#nav.sc{height:56px}
+.nlogo{
+  font-family:'Cormorant Garamond',serif;font-size:1.22rem;font-weight:700;
+  letter-spacing:.04em;color:var(--hd);display:flex;align-items:center;gap:.6rem;
+  cursor:none;
+}
+.nlogo em{font-style:italic;color:var(--g)}
+/* ── 📸 LOGO NAV : Si vous voulez un logo image, remplacez ci-dessous ── */
+/* <img src="VOTRE_LOGO.png" alt="FZ Logo" style="height:32px;width:auto"> */
+.npulse{
+  width:6px;height:6px;border-radius:50%;background:var(--t);
+  animation:nPulse 2.5s infinite;flex-shrink:0;
+}
+@keyframes nPulse{0%,100%{box-shadow:0 0 0 0 var(--tglow)}65%{box-shadow:0 0 0 6px transparent}}
+.nlinks{display:flex;gap:2.5rem;align-items:center}
+.nlinks a{
+  font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--tx3);position:relative;padding-bottom:3px;transition:color .3s;
+}
+.nlinks a::after{
+  content:'';position:absolute;bottom:0;left:0;width:0;height:1.5px;
+  background:linear-gradient(90deg,var(--g),var(--t));
+  transition:width .45s var(--ease);border-radius:1px;
+}
+.nlinks a:hover,.nlinks a.on{color:var(--g)}
+.nlinks a:hover::after,.nlinks a.on::after{width:100%}
+.nright{display:flex;align-items:center;gap:1.2rem}
+
+/* Theme switch */
+.theme-sw{
+  width:48px;height:26px;background:var(--s1);border:1px solid var(--bd);
+  border-radius:99px;cursor:none;position:relative;transition:background .4s;
+}
+.theme-sw::after{
+  content:'';position:absolute;top:4px;left:4px;width:16px;height:16px;
+  border-radius:50%;background:linear-gradient(135deg,var(--g),var(--gl));
+  transition:transform .45s var(--spring);box-shadow:0 2px 10px var(--gglow);
+}
+[data-theme=light] .theme-sw::after{transform:translateX(22px)}
+
+/* Hamburger */
+.nhbg{display:none;flex-direction:column;gap:5px;cursor:none;padding:5px}
+.nhbg span{display:block;height:1.5px;background:var(--tx);transition:all .4s var(--ease);width:22px}
+.nhbg span:nth-child(2){width:14px}
+.nhbg.o span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nhbg.o span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nhbg.o span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* Mobile nav */
+#mobnav{
+  position:fixed;inset:0;z-index:490;
+  background:var(--b0);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;
+  transform:translateY(-100%);opacity:0;
+  transition:transform .6s var(--ease),opacity .6s;pointer-events:none;
+}
+#mobnav.o{transform:none;opacity:1;pointer-events:all}
+#mobnav a{
+  font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:700;
+  color:var(--tx2);transition:all .3s;letter-spacing:.03em;
+}
+#mobnav a:hover{color:var(--g);letter-spacing:.07em}
+.mob-soc{display:flex;gap:1rem;margin-top:1rem}
+.mob-soc a{
+  width:40px;height:40px;border-radius:10px;background:var(--s0);
+  border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;
+  color:var(--tx3);font-size:.85rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   SECTION BASE
+═══════════════════════════════════════════════════════════════ */
+section{padding:130px 3.5rem;position:relative;z-index:2}
+.W{max-width:1280px;margin:0 auto;width:100%}
+.lbl{
+  display:inline-flex;align-items:center;gap:.7rem;
+  font-size:.63rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--g);margin-bottom:1.1rem;
+}
+.lbl::before{content:'';width:28px;height:1px;background:linear-gradient(90deg,var(--g),transparent)}
+.ttl{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2rem,4vw,3.8rem);font-weight:700;
+  color:var(--hd);line-height:1.07;margin-bottom:1.4rem;
+}
+.ttl em,.ttl i{font-style:italic;color:var(--g)}
+.sub{font-size:.93rem;color:var(--tx2);max-width:560px;line-height:1.9;margin-bottom:4rem}
+
+/* Scroll reveal */
+[data-r]{opacity:0;transform:translateY(44px);transition:opacity .85s var(--ease),transform .85s var(--ease)}
+[data-r=l]{transform:translateX(-44px)}
+[data-r=r]{transform:translateX(44px)}
+[data-r=s]{transform:scale(.94) translateY(20px)}
+[data-r].vis{opacity:1;transform:none}
+[data-d="1"]{transition-delay:.1s!important}[data-d="2"]{transition-delay:.18s!important}
+[data-d="3"]{transition-delay:.26s!important}[data-d="4"]{transition-delay:.34s!important}
+[data-d="5"]{transition-delay:.42s!important}[data-d="6"]{transition-delay:.5s!important}
+[data-d="7"]{transition-delay:.58s!important}
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════════════════ */
+#hero{min-height:100svh;display:flex;align-items:center;padding:0 3.5rem;position:relative;overflow:hidden}
+#hc{position:absolute;inset:0;z-index:0;pointer-events:none}
+.strata{position:absolute;inset:0;z-index:0;overflow:hidden}
+.strata-line{
+  position:absolute;left:-10%;right:-10%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--bd) 20%,var(--bd) 80%,transparent);
+  animation:strataAnim linear infinite alternate;
+}
+@keyframes strataAnim{from{transform:translateX(-3%)}to{transform:translateX(3%)}}
+.hexbg{
+  position:absolute;inset:0;z-index:0;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='48'%3E%3Cpolygon points='28,2 54,16 54,40 28,54 2,40 2,16' fill='none' stroke='%23B8843A' stroke-width='1'/%3E%3C/svg%3E");
+  background-size:56px 48px;transition:transform .1s linear;
+}
+
+.hero-inner{
+  position:relative;z-index:2;max-width:1280px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1.15fr 1fr;gap:5rem;align-items:center;
+  padding:110px 0 70px;
+}
+
+/* Hero eyebrow */
+.hero-eyebrow{
+  display:flex;align-items:center;gap:.8rem;margin-bottom:2rem;
+  opacity:0;animation:fadeSlide .8s .1s var(--ease) forwards;
+}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.eyebrow-pill{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.4rem 1.1rem;
+  background:var(--gdim);border:1px solid rgba(184,132,58,.28);border-radius:99px;
+  font-size:.65rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gl);
+}
+.epill-dot{width:7px;height:7px;border-radius:50%;background:var(--t);position:relative;flex-shrink:0}
+.epill-dot::after{
+  content:'';position:absolute;inset:-4px;border-radius:50%;
+  background:var(--t);animation:epulse 2.5s ease-out infinite;
+}
+@keyframes epulse{to{transform:scale(3.5);opacity:0}}
+
+/* Hero headings */
+.hero-hn{font-family:'Cormorant Garamond',serif;line-height:.95;margin-bottom:1.3rem}
+.hero-hn .l1{
+  display:block;font-size:clamp(2.8rem,5vw,4.8rem);font-weight:300;
+  color:var(--tx2);letter-spacing:-.01em;
+  opacity:0;animation:fadeSlide .9s .25s var(--ease) forwards;
+}
+.hero-hn .l2{
+  display:block;font-size:clamp(3.5rem,7vw,6.8rem);font-weight:900;
+  letter-spacing:-.03em;line-height:.88;
+  background:linear-gradient(125deg,var(--g) 0%,var(--gl) 40%,var(--gll) 62%,var(--g) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  background-size:200% auto;
+  animation:fadeSlide .9s .35s var(--ease) forwards,gradShift 4s 1.5s ease-in-out infinite alternate;
+  opacity:0;
+}
+@keyframes gradShift{to{background-position:100%}}
+
+/* Typewriter roles */
+.hero-roles{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.9rem;opacity:0;animation:fadeSlide .9s .5s var(--ease) forwards}
+.hero-role-line{display:flex;align-items:center;gap:.8rem;font-size:1rem;color:var(--tx2);font-weight:300}
+.role-ico{width:22px;height:1px;background:linear-gradient(90deg,var(--g),transparent);opacity:.6;flex-shrink:0}
+.role-tag{
+  display:inline-block;padding:.18rem .55rem;background:rgba(32,179,154,.1);
+  border:1px solid rgba(32,179,154,.2);border-radius:4px;
+  font-size:.62rem;color:var(--t);font-weight:600;letter-spacing:.07em;margin-left:.4rem;
+}
+
+/* Typewriter cursor */
+.tw-cursor{display:inline-block;width:2px;height:1em;background:var(--g);margin-left:2px;vertical-align:middle;animation:blink .8s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+.hero-bio{
+  font-size:.93rem;color:var(--tx2);max-width:470px;line-height:2;
+  margin-bottom:2.5rem;opacity:0;animation:fadeSlide .9s .65s var(--ease) forwards;
+}
+.hero-bio mark{background:none;color:var(--gl);font-weight:600}
+
+/* CTA buttons */
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;opacity:0;animation:fadeSlide .9s .78s var(--ease) forwards}
+.btn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.9rem 2rem;border-radius:var(--r12);font-weight:600;font-size:.83rem;
+  letter-spacing:.03em;cursor:none;border:none;position:relative;overflow:hidden;
+  transition:transform .25s var(--ease),box-shadow .3s;
+}
+.btn::after{
+  content:'';position:absolute;inset:0;background:rgba(255,255,255,.09);
+  transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);
+}
+.btn:hover::after{transform:scaleX(1)}
+.btn-p{
+  background:linear-gradient(135deg,var(--g) 0%,#9C6A20 100%);
+  color:#fff;box-shadow:0 5px 28px var(--gglow),inset 0 1px 0 rgba(255,255,255,.18);
+}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 14px 40px var(--gglow)}
+.btn-s{background:transparent;color:var(--tx);border:1px solid var(--bd);backdrop-filter:blur(6px)}
+.btn-s:hover{border-color:var(--g);color:var(--g);background:var(--gdim);transform:translateY(-2px)}
+
+/* Social links */
+.hero-soc{display:flex;gap:.7rem;opacity:0;animation:fadeSlide .9s .92s var(--ease) forwards}
+.hs{
+  width:42px;height:42px;border-radius:var(--r8);background:var(--s0);
+  border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;
+  color:var(--tx3);font-size:.82rem;cursor:none;
+  transition:all .4s var(--ease);position:relative;overflow:hidden;
+}
+.hs::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--gdim),var(--tdim));opacity:0;transition:opacity .4s;
+}
+.hs:hover::before{opacity:1}
+.hs:hover{border-color:var(--g);color:var(--g);transform:translateY(-3px) scale(1.07)}
+
+/* Hero right — photo frame */
+.hero-right{opacity:0;animation:fadeSlide .9s .42s var(--ease) forwards;position:relative}
+.pframe{
+  position:relative;border-radius:26px;aspect-ratio:4/5;max-width:390px;
+  margin:0 auto;overflow:hidden;background:var(--s0);border:1px solid var(--bd);
+}
+.pframe::before{
+  content:'';position:absolute;inset:-2px;border-radius:28px;
+  background:conic-gradient(from var(--a,0deg),transparent 0%,var(--g) 10%,transparent 20%);
+  z-index:-1;animation:conicSpin 4.5s linear infinite;
+}
+@property --a{syntax:'<angle>';inherits:false;initial-value:0deg}
+@keyframes conicSpin{to{--a:360deg}}
+
+/* ──────────────────────────────────────────────────────────
+   📸 PHOTO PRINCIPALE (Hero)
+   Remplacez la div .pframe-inner par :
+   <img src="VOTRE_PHOTO_HERO.jpg" alt="Fatima-Zahra ER-RKABI"
+        style="width:100%;height:100%;object-fit:cover;object-position:top center">
+   Photo recommandée : portrait professionnel vertical, min 800×1000px
+────────────────────────────────────────────────────────── */
+.pframe-inner{
+  width:100%;height:100%;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:1rem;color:var(--tx3);
+  position:relative;z-index:1;
+}
+.pframe-inner::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(184,132,58,.18),transparent 45%,rgba(32,179,154,.1));
+  pointer-events:none;
+}
+.ph-placeholder-icon{font-size:4rem;color:var(--g);opacity:.2}
+.ph-placeholder-text{font-size:.68rem;color:var(--tx3);text-align:center;line-height:1.6}
+.ph-placeholder-text strong{display:block;color:var(--g);font-size:.75rem;margin-bottom:.3rem}
+
+/* Floating cards */
+.fc{
+  position:absolute;border-radius:16px;padding:1rem 1.4rem;
+  background:var(--s0);border:1px solid var(--bd);
+  backdrop-filter:blur(20px);box-shadow:var(--sh);z-index:10;
+}
+.fc-a{bottom:2rem;left:-3rem;animation:fc1float 8s ease-in-out infinite}
+.fc-b{top:2.5rem;right:-2.8rem;animation:fc1float 8s 4s ease-in-out infinite}
+.fc-c{top:50%;right:-3.8rem;transform:translateY(-50%);animation:fc2float 8s 2s ease-in-out infinite}
+@keyframes fc1float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes fc2float{0%,100%{transform:translateY(-50%)}50%{transform:translateY(calc(-50% - 10px))}}
+.fc-label{font-size:.58rem;color:var(--tx3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem}
+.fc-val{font-family:'Fira Code',monospace;font-size:1.45rem;font-weight:500;color:var(--g);line-height:1}
+.fc-tag{font-size:.6rem;color:var(--tx3);margin-top:.2rem}
+
+/* Scroll indicator */
+.scrlarr{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.7rem;
+  color:var(--tx3);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
+  opacity:0;animation:fadeSlide 1s 1.4s ease forwards;z-index:2;
+}
+.arr-box{width:24px;height:38px;border:1.5px solid var(--bd);border-radius:12px;display:flex;justify-content:center;padding-top:7px}
+.arr-dot{width:3px;height:7px;border-radius:2px;background:var(--g);animation:arrBounce 2.5s ease-in-out infinite}
+@keyframes arrBounce{0%,100%{opacity:1;transform:none}55%{opacity:.2;transform:translateY(9px)}}
+
+/* ═══════════════════════════════════════════════════════════════
+   TICKER
+═══════════════════════════════════════════════════════════════ */
+.ticker-wrap{background:var(--g);padding:.58rem 0;overflow:hidden;position:relative;z-index:3}
+.ticker{display:flex;width:max-content;animation:ticker 28s linear infinite}
+.ticker-item{
+  display:flex;align-items:center;gap:2rem;padding:0 2rem;
+  font-size:.7rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;
+  color:rgba(0,0,0,.68);white-space:nowrap;
+}
+.ticker-item .sep{opacity:.35}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-wrap:hover .ticker{animation-play-state:paused}
+
+/* ═══════════════════════════════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════════════════════════════ */
+#about{background:var(--b1)}
+.about-g{display:grid;grid-template-columns:1fr 1.65fr;gap:7rem;align-items:center}
+.ap-wrap{position:relative}
+
+/* ──────────────────────────────────────────────────────────
+   📸 PHOTO PORTRAIT (Section À Propos)
+   Remplacez le contenu de .ap-main par :
+   <img src="VOTRE_PHOTO_PORTRAIT.jpg" alt="Fatima-Zahra ER-RKABI"
+        style="width:100%;height:100%;object-fit:cover;border-radius:24px">
+   Photo recommandée : portrait semi-formel, ratio 3:4, min 600×800px
+────────────────────────────────────────────────────────── */
+.ap-main{
+  border-radius:24px;aspect-ratio:3/4;background:var(--s0);border:1px solid var(--bd);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  gap:.8rem;overflow:hidden;position:relative;
+}
+.ap-main::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(184,132,58,.2) 0%,transparent 50%,rgba(32,179,154,.1) 100%);
+}
+.ap-main-placeholder{z-index:1;display:flex;flex-direction:column;align-items:center;gap:.8rem}
+.ap-main-placeholder i{font-size:4rem;color:var(--g);opacity:.2}
+.ap-main-placeholder span{font-size:.68rem;color:var(--tx3);text-align:center;line-height:1.6}
+.ap-ring{
+  position:absolute;border-radius:50%;border:1px solid var(--bd);
+  animation:ringPulse 4s ease-in-out infinite;pointer-events:none;
+}
+.ap-ring:nth-child(1){inset:-30px;animation-delay:0s}
+.ap-ring:nth-child(2){inset:-65px;opacity:.4;animation-delay:-2s}
+@keyframes ringPulse{0%,100%{opacity:.12}50%{opacity:.38}}
+.ap-badge{
+  position:absolute;bottom:-22px;right:-22px;width:115px;height:115px;
+  background:linear-gradient(135deg,var(--s0),var(--s1));
+  border:1px solid var(--bd);border-radius:18px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.3rem;
+  box-shadow:var(--sh);
+}
+.apb-n{
+  font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:900;
+  background:linear-gradient(135deg,var(--g),var(--gl));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;
+}
+.apb-t{font-size:.58rem;color:var(--tx3);text-align:center;text-transform:uppercase;letter-spacing:.07em;line-height:1.5}
+
+/* About body */
+.about-body p{font-size:.92rem;color:var(--tx2);line-height:1.95;margin-bottom:1.2rem}
+.about-body strong{color:var(--tx);font-weight:600}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:.55rem;margin:1.6rem 0}
+.tag{
+  padding:.36rem .9rem;border-radius:99px;border:1px solid var(--bd);
+  background:var(--s0);font-size:.7rem;color:var(--tx2);
+  transition:all .35s var(--ease);cursor:default;
+}
+.tag:hover{background:var(--gdim);border-color:var(--g);color:var(--g);transform:translateY(-2px) scale(1.04)}
+.stats-row{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  padding-top:2rem;border-top:1px solid var(--bd);margin-top:2rem;
+}
+.stat{text-align:center}
+.stat-n{
+  font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:700;
+  background:linear-gradient(135deg,var(--g),var(--t));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:block;line-height:1;
+}
+.stat-l{font-size:.66rem;color:var(--tx3);text-transform:uppercase;letter-spacing:.09em;margin-top:.35rem;display:block}
+
+/* ═══════════════════════════════════════════════════════════════
+   NUMBERS STRIP (nouvelle section)
+═══════════════════════════════════════════════════════════════ */
+.numbers-strip{
+  background:var(--b0);border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);
+  padding:4rem 3.5rem;
+}
+.numbers-inner{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;
+}
+.num-item{text-align:center;padding:1.5rem}
+.num-val{
+  font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:900;line-height:1;
+  background:linear-gradient(135deg,var(--g),var(--gll));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  display:block;
+}
+.num-unit{font-size:.75rem;color:var(--g);font-family:'Fira Code',monospace;margin-left:2px}
+.num-label{font-size:.72rem;color:var(--tx3);text-transform:uppercase;letter-spacing:.12em;margin-top:.6rem;display:block}
+.num-desc{font-size:.78rem;color:var(--tx2);margin-top:.3rem;line-height:1.5}
+
+/* ═══════════════════════════════════════════════════════════════
+   EDUCATION — Timeline verticale alternée
+═══════════════════════════════════════════════════════════════ */
+#education{background:var(--b0)}
+.edu-timeline{position:relative;padding-top:2rem}
+.edu-timeline::before{
+  content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;
+  background:linear-gradient(to bottom,transparent,var(--g) 8%,var(--t) 50%,var(--g) 92%,transparent);
+  transform:translateX(-50%);
+}
+.edu-item{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;margin-bottom:4.5rem;align-items:center}
+.edu-item:nth-child(even) .edu-card-wrap{grid-column:3}
+.edu-item:nth-child(even) .edu-spacer{grid-column:1;grid-row:1}
+.edu-item:nth-child(odd) .edu-card-wrap{grid-column:1}
+.edu-node{grid-column:2;display:flex;align-items:center;justify-content:center;z-index:1}
+.edu-dot{
+  width:14px;height:14px;border-radius:50%;background:var(--g);
+  border:3px solid var(--b0);
+  box-shadow:0 0 0 3px var(--g),0 0 20px var(--gglow);
+  transition:transform .3s var(--spring);
+}
+.edu-item:hover .edu-dot{transform:scale(1.4)}
+.edu-card{
+  background:var(--s0);border:1px solid var(--bd);border-radius:var(--r20);
+  padding:2rem;position:relative;transition:all .5s var(--ease);
+}
+.edu-card::before{
+  content:'';position:absolute;inset:-1px;border-radius:calc(var(--r20) + 1px);
+  background:linear-gradient(135deg,var(--gdim),transparent,var(--tdim));
+  opacity:0;transition:opacity .4s;z-index:-1;
+}
+.edu-card:hover{border-color:var(--g);transform:translateY(-6px);box-shadow:0 24px 55px rgba(0,0,0,.28)}
+.edu-card:hover::before{opacity:1}
+.edu-yr{
+  font-family:'Fira Code',monospace;font-size:.63rem;color:var(--g);
+  letter-spacing:.12em;margin-bottom:1rem;display:inline-flex;align-items:center;gap:.5rem;
+}
+.edu-yr::before{content:'◆';font-size:.42rem}
+.edu-school{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:var(--hd);margin-bottom:.4rem;line-height:1.2}
+.edu-deg{font-size:.78rem;color:var(--t);font-weight:500;margin-bottom:.8rem}
+.edu-info{font-size:.77rem;color:var(--tx3);line-height:1.7;margin-bottom:1rem}
+.edu-badge-r{
+  display:inline-flex;align-items:center;gap:.4rem;padding:.26rem .72rem;
+  border-radius:99px;font-size:.62rem;font-weight:600;
+  background:rgba(32,179,154,.1);border:1px solid rgba(32,179,154,.22);color:var(--t);
+}
+
+/* ── 📸 IMAGES ÉDUCATION ──
+   Dans chaque .edu-img, remplacez le contenu par :
+   <img src="EMI_CAMPUS.jpg" alt="EMI campus" style="width:100%;height:100%;object-fit:cover;border-radius:8px">
+   Images suggérées : photos de l'établissement, cérémonie de remise de diplôme
+── */
+.edu-imgs{display:flex;gap:.6rem;margin-top:1.2rem}
+.edu-img{
+  height:52px;flex:1;border-radius:var(--r8);background:var(--b1);
+  border:1px dashed var(--bd);display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:.2rem;cursor:pointer;transition:all .3s;
+  font-size:.52rem;color:var(--tx3);overflow:hidden;
+}
+.edu-img i{font-size:1rem;color:var(--g);opacity:.35}
+.edu-img:hover{border-style:solid;border-color:var(--g);background:var(--gdim)}
+
+/* ═══════════════════════════════════════════════════════════════
+   EXPERIENCE — Bento masonry
+═══════════════════════════════════════════════════════════════ */
+#experience{background:var(--b1)}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:1.4rem}
+.bc{
+  background:var(--s0);border:1px solid var(--bd);border-radius:22px;
+  overflow:hidden;transition:all .5s var(--ease);position:relative;
+}
+.bc::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--gdim),transparent 60%);
+  opacity:0;transition:opacity .45s;pointer-events:none;z-index:0;
+}
+.bc:hover::before{opacity:1}
+.bc:hover{border-color:var(--g);box-shadow:0 28px 65px rgba(0,0,0,.32)}
+.bci{padding:2rem;position:relative;z-index:1;height:100%}
+.bc-main{grid-column:span 7;grid-row:span 2}
+.bc-pfe{grid-column:span 5}
+.bc-ocp{grid-column:span 5}
+.bc-s1{grid-column:span 4}
+.bc-s2{grid-column:span 4}
+.bc-s3{grid-column:span 4}
+
+.bc-hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.bc-co-wrap{display:flex;align-items:center;gap:1rem}
+
+/* ── 📸 LOGOS ENTREPRISES ──
+   Remplacez le contenu de chaque .bc-logo par l'image du logo :
+   <img src="MANAGEM_LOGO.png" alt="Managem Group" style="width:100%;height:100%;object-fit:contain;padding:6px">
+   Logos recommandés : fond transparent, format carré, min 100×100px
+── */
+.bc-logo{
+  width:50px;height:50px;border-radius:12px;background:var(--b1);
+  border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;color:var(--g);opacity:.65;flex-shrink:0;
+  transition:all .35s;overflow:hidden;
+}
+.bc:hover .bc-logo{background:var(--gdim);border-color:var(--g);opacity:1}
+.bc-co{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;color:var(--hd);line-height:1.2}
+.bc-role{font-size:.74rem;color:var(--t);font-weight:500;margin-top:.1rem}
+.bc-dur{font-family:'Fira Code',monospace;font-size:.66rem;color:var(--g);text-align:right}
+.bc-loc{font-size:.62rem;color:var(--tx3);text-align:right;margin-top:.2rem}
+.bc-type{
+  display:inline-flex;align-items:center;gap:.3rem;padding:.22rem .62rem;
+  border-radius:5px;font-size:.58rem;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;margin-top:.5rem;
+}
+.bt-pfe{background:rgba(184,132,58,.14);border:1px solid rgba(184,132,58,.26);color:var(--g)}
+.bt-cdi{background:rgba(32,179,154,.1);border:1px solid rgba(32,179,154,.22);color:var(--t)}
+.bt-pfa{background:rgba(100,150,255,.1);border:1px solid rgba(100,150,255,.2);color:#7AADFF}
+.bt-ini{background:rgba(160,120,255,.1);border:1px solid rgba(160,120,255,.2);color:#B09AFF}
+.bc-q{
+  font-style:italic;font-size:.77rem;color:var(--g);
+  border-left:2px solid var(--g);padding-left:.9rem;
+  margin-bottom:1.2rem;line-height:1.65;opacity:.85;
+}
+.bc-tasks li{
+  font-size:.81rem;color:var(--tx2);padding:.44rem 0 .44rem 1.4rem;
+  border-bottom:1px solid var(--bd2);position:relative;line-height:1.55;
+}
+.bc-tasks li:last-child{border-bottom:none}
+.bc-tasks li::before{content:'▸';position:absolute;left:0;color:var(--g);font-size:.56rem;top:.56rem}
+.bc-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.2rem}
+.btag{
+  padding:.2rem .62rem;border-radius:4px;background:var(--b1);
+  border:1px solid var(--bd2);font-size:.62rem;color:var(--tx3);font-family:'Fira Code',monospace;
+}
+
+/* ── 📸 IMAGES EXPÉRIENCE ──
+   Dans chaque .bc-img-sl, remplacez le contenu par :
+   <img src="MANAGEM_SIEGE.jpg" alt="Siège Managem" style="width:100%;height:100%;object-fit:cover">
+   Images suggérées : extérieur/intérieur entreprise, équipe, chantier minier
+── */
+.bc-imgs{display:flex;border-top:1px solid var(--bd)}
+.bc-img-sl{
+  flex:1;height:68px;background:var(--b2);display:flex;align-items:center;
+  justify-content:center;border-right:1px solid var(--bd);flex-direction:column;
+  gap:.25rem;cursor:pointer;transition:background .3s;font-size:.52rem;color:var(--tx3);overflow:hidden;
+}
+.bc-img-sl:last-child{border-right:none}
+.bc-img-sl:hover{background:var(--gdim)}
+.bc-img-sl i{font-size:1.05rem;color:var(--g);opacity:.35}
+
+/* ═══════════════════════════════════════════════════════════════
+   SKILLS
+═══════════════════════════════════════════════════════════════ */
+#skills{background:var(--b0)}
+.skills-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:5rem;align-items:start}
+.sg{margin-bottom:2.5rem}
+.sg-ttl{
+  font-size:.61rem;font-weight:700;letter-spacing:.17em;text-transform:uppercase;
+  color:var(--tx3);padding-bottom:.7rem;margin-bottom:1.3rem;
+  border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:.6rem;
+}
+.sg-ttl i{color:var(--g)}
+.sbar-wrap{margin-bottom:1.1rem}
+.sbar-hd{display:flex;justify-content:space-between;margin-bottom:.48rem}
+.sbar-nm{font-size:.84rem;color:var(--tx);font-weight:500}
+.sbar-pc{font-family:'Fira Code',monospace;font-size:.64rem;color:var(--g)}
+.sbar-tr{height:3px;background:var(--s1);border-radius:99px;position:relative;overflow:visible}
+.sbar-fl{
+  height:100%;width:0;
+  background:linear-gradient(90deg,var(--g),var(--t));
+  border-radius:99px;transition:width 1.6s var(--ease);position:relative;
+}
+.sbar-fl::after{
+  content:'';position:absolute;right:-4px;top:50%;transform:translateY(-50%);
+  width:9px;height:9px;border-radius:50%;background:var(--t);
+  box-shadow:0 0 10px var(--tglow);opacity:0;transition:opacity .3s .9s;
+}
+.sbar-fl.lit::after{opacity:1}
+
+/* Skill chips */
+.hex-wrap{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.8rem}
+.hx{
+  padding:.46rem .95rem;border-radius:var(--r8);border:1px solid var(--bd);
+  background:var(--s0);font-size:.75rem;color:var(--tx2);font-weight:500;
+  display:flex;align-items:center;gap:.42rem;cursor:default;
+  position:relative;overflow:hidden;transition:all .4s var(--ease);
+}
+.hx::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--gdim),var(--tdim));
+  opacity:0;transition:opacity .4s;
+}
+.hx:hover{border-color:var(--g);color:var(--g);transform:translateY(-3px) scale(1.04)}
+.hx:hover::before{opacity:1}
+.hx i,.hx span{position:relative;z-index:1}
+
+/* Languages */
+.lang-cards{display:flex;flex-direction:column;gap:.8rem}
+.lang-card{
+  background:var(--s0);border:1px solid var(--bd);border-radius:13px;
+  padding:1rem 1.3rem;display:flex;align-items:center;gap:1.2rem;
+  transition:all .4s var(--ease);
+}
+.lang-card:hover{border-color:var(--g);transform:translateX(5px)}
+.lang-fl{font-size:1.6rem;line-height:1}
+.lang-inf{flex:1}
+.lang-nm{font-weight:600;font-size:.9rem;color:var(--hd)}
+.lang-lv{font-size:.64rem;color:var(--tx3);font-family:'Fira Code',monospace}
+.lang-lvbar{flex-shrink:0;display:flex;gap:3px}
+.lbar{width:20px;height:4px;border-radius:2px;background:var(--s2);transition:background .3s}
+.lbar.on{background:linear-gradient(90deg,var(--g),var(--gl))}
+
+/* ═══════════════════════════════════════════════════════════════
+   CERTIFICATIONS
+═══════════════════════════════════════════════════════════════ */
+#certifications{background:var(--b1)}
+.cert-gr{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.2rem}
+.cert-c{
+  display:flex;align-items:flex-start;gap:1rem;padding:1.5rem 1.6rem;
+  background:var(--s0);border:1px solid var(--bd);border-radius:15px;
+  transition:all .45s var(--ease);position:relative;overflow:hidden;cursor:default;
+}
+.cert-c::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2.5px;
+  background:linear-gradient(90deg,var(--g),var(--t));
+  transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease);
+}
+.cert-c:hover{border-color:var(--g);transform:translateY(-5px);box-shadow:0 18px 45px rgba(0,0,0,.22)}
+.cert-c:hover::after{transform:scaleX(1)}
+.cert-ico{
+  width:46px;height:46px;flex-shrink:0;border-radius:10px;
+  background:var(--gdim);border:1px solid rgba(184,132,58,.22);
+  display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--g);
+  transition:all .35s;
+}
+.cert-c:hover .cert-ico{background:var(--g);color:#fff;box-shadow:0 4px 18px var(--gglow)}
+.cert-is{font-size:.6rem;color:var(--t);font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.cert-nm{font-size:.86rem;font-weight:600;color:var(--hd);line-height:1.35;margin-top:.2rem}
+
+/* ── 📸 BADGES CERTIFICATIONS ──
+   Pour chaque certificat, vous pouvez remplacer l'icône par le badge officiel :
+   <img src="BADGE_LECTERA.png" alt="Lectera Badge" style="width:100%;height:100%;object-fit:contain">
+   Badges au format PNG fond transparent, taille 100×100px recommandée
+── */
+
+/* ═══════════════════════════════════════════════════════════════
+   BLOG
+═══════════════════════════════════════════════════════════════ */
+#blog{background:var(--b0)}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+.blog-card{
+  background:var(--s0);border:1px solid var(--bd);border-radius:var(--r20);
+  overflow:hidden;cursor:none;transition:all .5s var(--ease);
+}
+.blog-card:hover{border-color:var(--g);transform:translateY(-8px) scale(1.007);box-shadow:0 36px 75px rgba(0,0,0,.3)}
+
+/* ── 📸 IMAGES ARTICLES DE BLOG ──
+   Remplacez le .blog-thumb par une balise img :
+   <div class="blog-thumb" style="padding:0">
+     <img src="ARTICLE_1_COVER.jpg" alt="Article géomécanique"
+          style="width:100%;height:100%;object-fit:cover;transition:transform .6s">
+   </div>
+   .blog-card:hover img { transform: scale(1.08); }
+   Images : photographies de mine, illustrations 3D, infographies — 16:9 recommandé
+── */
+.blog-thumb{height:218px;background:var(--b2);position:relative;overflow:hidden}
+.bt-inner{
+  width:100%;height:100%;display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:.6rem;color:var(--tx3);font-size:.68rem;
+  transition:transform .6s var(--ease);
+}
+.blog-card:hover .bt-inner{transform:scale(1.07)}
+.bt-inner i{font-size:2.5rem;color:var(--g);opacity:.28}
+.b-cat{
+  position:absolute;top:1rem;left:1rem;padding:.3rem .78rem;
+  border-radius:6px;font-size:.58rem;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:#fff;backdrop-filter:blur(8px);
+}
+.blog-body{padding:1.5rem}
+.b-meta{display:flex;align-items:center;gap:.6rem;margin-bottom:.9rem}
+.b-date{font-family:'Fira Code',monospace;font-size:.6rem;color:var(--tx3)}
+.b-sep{width:3px;height:3px;border-radius:50%;background:var(--tx3);opacity:.5}
+.b-read{font-size:.6rem;color:var(--tx3)}
+.b-ttl{
+  font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:700;
+  color:var(--hd);line-height:1.32;margin-bottom:.8rem;
+}
+.b-exc{
+  font-size:.78rem;color:var(--tx2);line-height:1.82;margin-bottom:1rem;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+}
+.b-foot{
+  display:flex;justify-content:space-between;align-items:center;
+  padding-top:1rem;border-top:1px solid var(--bd2);
+}
+.b-by{display:flex;align-items:center;gap:.55rem}
+
+/* ── 📸 AVATAR AUTEUR (blog cards) ──
+   Remplacez .b-av par :
+   <img src="AVATAR_FZ.jpg" alt="FZ" style="width:24px;height:24px;border-radius:50%;object-fit:cover;border:1px solid var(--g)">
+   Photo : petit avatar carré, 60×60px minimum, bien centré sur le visage
+── */
+.b-av{
+  width:26px;height:26px;border-radius:50%;background:var(--gdim);
+  border:1px solid var(--g);display:flex;align-items:center;justify-content:center;
+  font-size:.52rem;color:var(--g);font-weight:700;overflow:hidden;
+}
+.b-nm{font-size:.7rem;color:var(--tx2)}
+.b-more{font-size:.7rem;color:var(--g);display:flex;align-items:center;gap:.35rem;transition:gap .3s}
+.blog-card:hover .b-more{gap:.65rem}
+
+/* ═══════════════════════════════════════════════════════════════
+   ACTIVITIES
+═══════════════════════════════════════════════════════════════ */
+#activities{background:var(--b1)}
+.act-g{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.act-c{
+  background:var(--s0);border:1px solid var(--bd);border-radius:18px;
+  padding:2rem;position:relative;overflow:hidden;transition:all .45s var(--ease);
+}
+.act-c::after{
+  content:'';position:absolute;top:-60%;right:-60%;width:180%;height:180%;
+  background:radial-gradient(circle,var(--tdim),transparent 65%);
+  opacity:0;transition:opacity .5s;pointer-events:none;
+}
+.act-c:hover::after{opacity:1}
+.act-c:hover{border-color:var(--t);transform:translateY(-4px);box-shadow:0 22px 52px rgba(0,0,0,.22)}
+.act-ic{
+  width:50px;height:50px;border-radius:12px;
+  background:rgba(32,179,154,.1);border:1px solid rgba(32,179,154,.2);
+  display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--t);
+  margin-bottom:1.2rem;transition:all .35s;position:relative;z-index:1;
+}
+.act-c:hover .act-ic{background:var(--t);color:#fff;box-shadow:0 4px 20px var(--tglow)}
+.act-org{font-size:.61rem;color:var(--t);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem;z-index:1;position:relative}
+.act-role{font-family:'Cormorant Garamond',serif;font-size:1.28rem;font-weight:700;color:var(--hd);margin-bottom:.4rem;z-index:1;position:relative}
+.act-per{font-family:'Fira Code',monospace;font-size:.6rem;color:var(--tx3);margin-bottom:.9rem;z-index:1;position:relative}
+.act-desc{font-size:.82rem;color:var(--tx2);line-height:1.82;z-index:1;position:relative}
+
+/* ═══════════════════════════════════════════════════════════════
+   TESTIMONIAL / QUOTE STRIP (nouvelle section)
+═══════════════════════════════════════════════════════════════ */
+.quote-strip{
+  background:var(--b0);padding:5rem 3.5rem;border-top:1px solid var(--bd);
+  border-bottom:1px solid var(--bd);overflow:hidden;position:relative;
+}
+.quote-strip::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 90% at 50% 50%,rgba(184,132,58,.06),transparent);
+}
+.quote-inner{max-width:860px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.q-mark{
+  font-family:'Cormorant Garamond',serif;font-size:8rem;color:var(--g);
+  line-height:.6;opacity:.18;display:block;margin-bottom:-1.5rem;
+}
+.q-text{
+  font-family:'Cormorant Garamond',serif;font-style:italic;
+  font-size:clamp(1.3rem,2.5vw,2rem);font-weight:400;
+  color:var(--hd);line-height:1.6;margin-bottom:2rem;
+}
+.q-text em{color:var(--g);font-style:normal}
+.q-auth{display:flex;align-items:center;justify-content:center;gap:1rem}
+.q-line{width:40px;height:1px;background:var(--bd)}
+.q-name{font-size:.72rem;color:var(--tx3);letter-spacing:.15em;text-transform:uppercase}
+
+/* ═══════════════════════════════════════════════════════════════
+   CV SECTION
+═══════════════════════════════════════════════════════════════ */
+#cv{background:var(--b0)}
+.cv-wrap{
+  display:grid;grid-template-columns:1fr 1fr;
+  background:var(--s0);border:1px solid var(--bd);border-radius:var(--r28);
+  overflow:hidden;box-shadow:var(--sh);position:relative;
+}
+.cv-wrap::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--gdim) 0%,transparent 50%,var(--tdim) 100%);
+  pointer-events:none;z-index:0;
+}
+.cv-left{
+  border-right:1px solid var(--bd);padding:5rem 4rem;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:2rem;
+  position:relative;z-index:1;overflow:hidden;
+}
+.cv-left::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(184,132,58,.07),transparent);
+}
+.cv-mock{
+  width:195px;background:var(--b1);border:1px solid var(--bd);border-radius:14px;
+  padding:1.5rem;box-shadow:0 24px 65px rgba(0,0,0,.42);
+  transform:rotate(-4deg);transition:transform .6s var(--ease),box-shadow .6s;
+  position:relative;z-index:1;
+}
+.cv-wrap:hover .cv-mock{transform:rotate(-1.5deg) scale(1.04) translateY(-6px);box-shadow:0 45px 90px rgba(0,0,0,.55)}
+.cv-mock-h{height:10px;background:linear-gradient(90deg,var(--g),var(--t));border-radius:3px;margin-bottom:.7rem}
+.cv-mock-l{height:3.5px;background:var(--s2);border-radius:2px;margin-bottom:.35rem}
+.cv-mock-l.s{width:55%}.cv-mock-l.m{width:75%}
+.cv-mock-s{height:7px;background:var(--gdim);border-left:2px solid var(--g);border-radius:0 2px 2px 0;margin:.9rem 0 .45rem}
+.cv-pgs{display:flex;gap:.4rem;position:relative;z-index:1}
+.cv-pg{width:8px;height:8px;border-radius:50%;background:var(--s2)}
+.cv-pg.on{background:linear-gradient(135deg,var(--g),var(--t))}
+.cv-mock-lbl{font-size:.66rem;color:var(--tx3);z-index:1;position:relative}
+.cv-right{padding:4rem;display:flex;flex-direction:column;justify-content:center;gap:1.8rem;position:relative;z-index:1}
+.cv-ttl{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--hd);line-height:1.2}
+.cv-desc{font-size:.87rem;color:var(--tx2);line-height:1.88}
+.cv-btns{display:flex;flex-direction:column;gap:.8rem}
+.cvb{
+  display:flex;align-items:center;gap:.9rem;padding:1.1rem 1.5rem;
+  border-radius:13px;border:1px solid;cursor:none;transition:all .45s var(--ease);
+}
+.cvb-dl{
+  background:linear-gradient(135deg,var(--g) 0%,#9C6A20 100%);
+  border-color:transparent;color:#fff;box-shadow:0 5px 26px var(--gglow);
+}
+.cvb-dl:hover{transform:translateY(-3px);box-shadow:0 14px 38px var(--gglow)}
+.cvb-vw{background:transparent;border-color:var(--bd);color:var(--tx)}
+.cvb-vw:hover{border-color:var(--g);color:var(--g);background:var(--gdim);transform:translateY(-2px)}
+.cvb-ic{width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cvb-main{font-weight:700;font-size:.86rem;display:block}
+.cvb-sub{font-size:.62rem;opacity:.7;display:block}
+.cv-note{font-size:.66rem;color:var(--tx3);display:flex;align-items:center;gap:.4rem}
+
+/* ═══════════════════════════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════════════════════════ */
+#contact{background:var(--b1)}
+.contact-g{display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;align-items:start}
+.ci-desc{font-size:.93rem;color:var(--tx2);line-height:1.92;margin-bottom:2.5rem}
+.ci-item{display:flex;align-items:center;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--bd)}
+.ci-item:last-of-type{border-bottom:none}
+.ci-ic{
+  width:44px;height:44px;flex-shrink:0;border-radius:10px;
+  background:var(--gdim);border:1px solid rgba(184,132,58,.22);
+  display:flex;align-items:center;justify-content:center;font-size:.9rem;color:var(--g);
+  transition:all .35s;
+}
+.ci-item:hover .ci-ic{background:var(--g);color:#fff;box-shadow:0 4px 18px var(--gglow)}
+.ci-l{font-size:.58rem;color:var(--tx3);text-transform:uppercase;letter-spacing:.1em}
+.ci-v{font-size:.87rem;color:var(--tx);font-weight:500;margin-top:.1rem}
+.form-bx{
+  background:var(--s0);border:1px solid var(--bd);border-radius:22px;
+  padding:2.5rem;position:relative;overflow:hidden;
+}
+.form-bx::before{
+  content:'';position:absolute;top:-50px;right:-50px;width:220px;height:220px;
+  border-radius:50%;background:radial-gradient(var(--gdim),transparent 70%);pointer-events:none;
+}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.ff2{display:flex;flex-direction:column;gap:.4rem}
+.ff2.full{grid-column:1/-1}
+.fl{font-size:.6rem;color:var(--tx3);text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+.fi,.fta{
+  padding:.88rem 1.1rem;background:var(--b1);border:1.5px solid var(--bd);
+  border-radius:10px;color:var(--tx);font-family:'DM Sans',sans-serif;font-size:.87rem;
+  outline:none;transition:all .35s;width:100%;
+}
+.fi:focus,.fta:focus{border-color:var(--g);background:var(--s0);box-shadow:0 0 0 3px var(--gdim)}
+.fta{resize:vertical;min-height:120px}
+.fsub{
+  width:100%;padding:1.1rem;margin-top:.5rem;
+  background:linear-gradient(135deg,var(--g),#9C6A20);color:#fff;
+  border:none;border-radius:12px;font-weight:700;font-size:.9rem;
+  cursor:none;transition:all .45s var(--ease);display:flex;align-items:center;
+  justify-content:center;gap:.6rem;box-shadow:0 5px 26px var(--gglow);
+  position:relative;overflow:hidden;
+}
+.fsub::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.1),transparent);
+  transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);
+}
+.fsub:hover::before{transform:scaleX(1)}
+.fsub:hover{transform:translateY(-3px);box-shadow:0 14px 38px var(--gglow)}
+.fsub:disabled{opacity:.55;pointer-events:none}
+
+/* Toast notification */
+.toast{
+  position:fixed;bottom:2.5rem;left:50%;transform:translateX(-50%) translateY(100px);
+  background:var(--s0);border:1px solid var(--g);border-radius:12px;
+  padding:.9rem 1.6rem;display:flex;align-items:center;gap:.8rem;
+  font-size:.84rem;font-weight:500;color:var(--tx);z-index:600;
+  box-shadow:0 16px 50px rgba(0,0,0,.4);transition:transform .5s var(--spring),opacity .5s;
+  opacity:0;
+}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast i{color:var(--g)}
+
+/* ═══════════════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════════════ */
+footer{
+  background:var(--b0);border-top:1px solid var(--bd);
+  padding:3rem 3.5rem;
+}
+.foot-inner{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:2rem;
+}
+.foot-logo{
+  font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.18rem;
+  color:var(--hd);letter-spacing:.03em;
+}
+.foot-logo em{font-style:italic;color:var(--g)}
+
+/* ── 📸 LOGO FOOTER ──
+   Si vous avez un logo, remplacez le texte par :
+   <img src="VOTRE_LOGO_BLANC.png" alt="FZ ER-RKABI" style="height:28px;width:auto">
+── */
+.foot-center{text-align:center}
+.foot-copy{font-size:.68rem;color:var(--tx3);line-height:1.6}
+.foot-copy a{color:var(--g);transition:opacity .3s}
+.foot-copy a:hover{opacity:.7}
+.foot-links{display:flex;gap:1.5rem;justify-content:flex-end}
+.foot-links a{font-size:.68rem;color:var(--tx3);transition:color .3s}
+.foot-links a:hover{color:var(--g)}
+.foot-soc{display:flex;gap:.6rem;justify-content:center;margin-top:.8rem}
+.foot-soc a{
+  width:32px;height:32px;border-radius:8px;background:var(--s0);
+  border:1px solid var(--bd);display:flex;align-items:center;justify-content:center;
+  color:var(--tx3);font-size:.72rem;transition:all .3s;
+}
+.foot-soc a:hover{background:var(--gdim);border-color:var(--g);color:var(--g)}
+
+/* ═══════════════════════════════════════════════════════════════
+   BACK TO TOP
+═══════════════════════════════════════════════════════════════ */
+#btt{
+  position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;
+  background:linear-gradient(135deg,var(--g),#9C6A20);
+  border-radius:13px;display:flex;align-items:center;justify-content:center;
+  color:#fff;cursor:none;box-shadow:0 5px 26px var(--gglow);
+  transition:all .45s var(--ease);z-index:400;
+  opacity:0;pointer-events:none;transform:translateY(12px);border:none;
+}
+#btt.vis{opacity:1;pointer-events:all;transform:none}
+#btt:hover{transform:translateY(-5px);box-shadow:0 14px 38px var(--gglow)}
+
+/* ═══════════════════════════════════════════════════════════════
+   MODAL — Blog
+═══════════════════════════════════════════════════════════════ */
+#modal-ovl{
+  position:fixed;inset:0;z-index:2000;
+  background:rgba(0,0,0,.88);backdrop-filter:blur(22px);
+  display:none;align-items:center;justify-content:center;padding:2rem;
+}
+#modal-ovl.open{display:flex}
+.modal-box{
+  background:var(--s0);border:1px solid var(--bd);border-radius:26px;
+  max-width:780px;width:100%;max-height:88vh;overflow-y:auto;
+  box-shadow:0 55px 120px rgba(0,0,0,.7);animation:mboxIn .5s var(--ease) both;
+}
+@keyframes mboxIn{from{opacity:0;transform:translateY(32px) scale(.95)}to{opacity:1;transform:none}}
+.m-hd{
+  padding:2.2rem;border-bottom:1px solid var(--bd);position:sticky;top:0;
+  background:var(--s0);backdrop-filter:blur(20px);z-index:1;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
+}
+
+/* ── 📸 IMAGE MODALE ARTICLE ──
+   Ajoutez une bannière dans .m-banner (juste après .m-hd) :
+   <div class="m-banner" style="height:260px;overflow:hidden">
+     <img src="ARTICLE_1_BANNER.jpg" alt="..." style="width:100%;height:100%;object-fit:cover">
+   </div>
+   Image : version large de la couverture article, min 1200×500px, ratio 16:6
+── */
+.m-cl{
+  width:38px;height:38px;flex-shrink:0;background:var(--s1);border:1px solid var(--bd);
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
+  cursor:none;color:var(--tx2);transition:all .3s;
+}
+.m-cl:hover{background:rgba(190,63,70,.14);border-color:rgba(190,63,70,.3);color:#e56}
+.m-cat{font-size:.6rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--g)}
+.m-ttl{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:700;color:var(--hd);line-height:1.25;margin-top:.4rem}
+.m-body{padding:2.5rem}
+.m-body p{color:var(--tx2);line-height:1.95;margin-bottom:1.2rem;font-size:.9rem}
+.m-body h3{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:700;color:var(--hd);margin:1.8rem 0 .7rem}
+.m-body ul{padding-left:1.2rem;margin-bottom:1.2rem}
+.m-body ul li{color:var(--tx2);font-size:.88rem;line-height:1.82;margin-bottom:.4rem;list-style:disc}
+.m-body strong{color:var(--tx);font-weight:600}
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL SECTION INDICATOR (right side)
+═══════════════════════════════════════════════════════════════ */
+#sec-ind{
+  position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);
+  z-index:400;display:flex;flex-direction:column;gap:.5rem;
+}
+.sec-dot{
+  width:5px;height:5px;border-radius:50%;background:var(--tx3);
+  transition:all .4s var(--ease);cursor:pointer;position:relative;
+}
+.sec-dot::before{
+  content:attr(data-label);position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  font-size:.6rem;color:var(--tx3);white-space:nowrap;letter-spacing:.1em;text-transform:uppercase;
+  opacity:0;transition:opacity .3s;background:var(--s0);padding:.2rem .5rem;
+  border-radius:4px;border:1px solid var(--bd);
+}
+.sec-dot:hover::before{opacity:1}
+.sec-dot.on{background:var(--g);box-shadow:0 0 8px var(--gglow);width:5px;height:16px;border-radius:3px}
+.sec-dot:hover{background:var(--gl)}
+
+/* ═══════════════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════════════ */
+@media(max-width:1100px){
+  .bento{grid-template-columns:repeat(6,1fr)}
+  .bc-main,.bc-pfe,.bc-ocp{grid-column:span 6}
+  .bc-s1,.bc-s2,.bc-s3{grid-column:span 2}
+  .about-g{grid-template-columns:1fr}
+  .ap-wrap{display:none}
+  .skills-layout{grid-template-columns:1fr}
+  .cv-wrap{grid-template-columns:1fr}
+  .cv-left{display:none}
+  .contact-g{grid-template-columns:1fr}
+  .blog-grid{grid-template-columns:repeat(2,1fr)}
+  .numbers-inner{grid-template-columns:repeat(2,1fr)}
+  #sec-ind{display:none}
+  .foot-inner{grid-template-columns:1fr;text-align:center}
+  .foot-links{justify-content:center}
+}
+@media(max-width:768px){
+  section{padding:90px 1.5rem}
+  #nav{padding:0 1.5rem}
+  .hero-inner{grid-template-columns:1fr;gap:2rem;padding:88px 0 40px}
+  .hero-right{display:none}
+  .nlinks{display:none}
+  .nhbg{display:flex}
+  .blog-grid{grid-template-columns:1fr}
+  .act-g{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr}
+  .edu-timeline::before{left:20px}
+  .edu-item{grid-template-columns:1fr;padding-left:3rem}
+  .edu-item:nth-child(even) .edu-card-wrap,
+  .edu-item:nth-child(odd) .edu-card-wrap{grid-column:1}
+  .edu-item .edu-node{display:none}
+  footer{padding:2rem 1.5rem}
+  .bento{grid-template-columns:1fr}
+  .bc-main,.bc-pfe,.bc-ocp,.bc-s1,.bc-s2,.bc-s3{grid-column:1}
+  .numbers-inner{grid-template-columns:repeat(2,1fr)}
+  .numbers-strip{padding:3rem 1.5rem}
+  .quote-strip{padding:4rem 1.5rem}
+}
+@media(max-width:480px){
+  .numbers-inner{grid-template-columns:1fr 1fr}
+  .hero-btns{flex-direction:column}
+  .btn{justify-content:center}
+}
+</style>
 </head>
-<body>
+<body class="loading">
 
-  <header>
-    <img src="profil professionnel 1.png" alt="Photo de profil de Mohammed Jabbari">
-    <h1>Mohammed Jabbari</h1>
-    <nav>
-      <a data-target="about"><i class="fas fa-user"></i> À propos</a>
-      <a data-target="skills"><i class="fas fa-tools"></i> Compétences</a>
-      <a data-target="education"><i class="fas fa-graduation-cap"></i> Formation</a>
-      <a data-target="projects"><i class="fas fa-project-diagram"></i> Projets</a>
-      <a data-target="certifications"><i class="fas fa-certificate"></i> Certifications</a>
-      <a data-target="contact"><i class="fas fa-envelope"></i> Contact</a>
-	</nav>
- 	   <button id="theme-toggle" style="position: absolute; top: 20px; right: 20px; padding: 10px 15px; background: #fff; border: none; border-radius: 20px; cursor: pointer; font-	weight: bold;">
-	  🌙 Mode Sombre
-	</button>
+<!-- ── SCROLL PROGRESS ── -->
+<div id="prog"></div>
 
-  </header>
-
-  <div class="side-menu">
-    <a data-target="about"><i class="fas fa-user"></i></a>
-    <a data-target="skills"><i class="fas fa-tools"></i></a>
-    <a data-target="education"><i class="fas fa-graduation-cap"></i></a>
-    <a data-target="projects"><i class="fas fa-project-diagram"></i></a>
-    <a data-target="certifications"><i class="fas fa-certificate"></i></a>
-    <a data-target="contact"><i class="fas fa-envelope"></i></a>
+<!-- ══════════════════════════════════════════════════════
+     LOADER
+══════════════════════════════════════════════════════════ -->
+<div id="loader">
+  <!-- 📸 LOADER LOGO : vous pouvez remplacer le texte par votre logo SVG ou PNG -->
+  <div class="ld-logo">Fatima-Zahra <b>ER-RKABI</b></div>
+  <div class="ld-ring">
+    <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="26"/><circle class="arc" cx="30" cy="30" r="26"/></svg>
   </div>
+  <div class="ld-counter" id="ldc">0%</div>
+  <div class="ld-tagline">Ingénieure · Minière · Auditrice</div>
+</div>
 
-  <section id="about" class="active">
-    <h2><i class="fas fa-user"></i> À propos</h2>
-    <p> Mohammed JABBARI | Élève Ingénieur Officier de Réserve | Génie Électrique & Automatisation Industrielle | EMI 
+<!-- ── CURSOR ── -->
+<div id="cur"></div>
+<div id="cur-o"></div>
 
-Passionné par l’innovation technologique, l’électrotechnique et l’automatisation industrielle, j’ai suivi un parcours académique rigoureux, combinant excellence scientifique et expertise technique </p>
-  </section>
+<!-- ── BACK TO TOP ── -->
+<button id="btt" onclick="scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
 
-  <section id="Competences">
-    <h2>Compétences</h2>
-    <div class="skills">
+<!-- ── TOAST ── -->
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i><span id="toast-msg">Message envoyé !</span></div>
 
-      <div class="card">
-  <h3>Programmation & Développement</h3>
-  <p>- Langages : Python, C, C++, JavaScript<br>- Systèmes embarqués : Arduino, VHDL (pour conception FPGA)<br>- Automates & Automatisation : Programmation d’API/PLC (Siemens TIA Portal, Schneider EcoStruxure)</p>
-  
-  <button class="toggle-btn">Plus de détails</button>
-  <div class="details">
-    <p>Grâce à ma maîtrise de plusieurs langages de programmation (Python, C/C++, JavaScript), je suis capable de développer des solutions logicielles efficaces, aussi bien pour des applications embarquées que pour des interfaces web interactives. Mon expérience avec Arduino et VHDL me permet de concevoir, simuler et implémenter des systèmes embarqués et des architectures logiques sur FPGA. En automatisation industrielle, je suis en mesure de programmer des automates Siemens et Schneider pour automatiser des processus, concevoir des IHM, gérer des entrées/sorties, et optimiser les performances des installations via TIA Portal ou EcoStruxure. Ces compétences me permettent d’intervenir aussi bien dans le développement, la régulation que la supervision de systèmes intelligents et automatisés.</p>
+<!-- ══════════════════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════════════════════ -->
+<nav id="nav">
+  <a href="#hero" class="nlogo">
+    <!-- 📸 LOGO NAV : Remplacez par <img src="LOGO.png" alt="FZ" style="height:30px"> si vous avez un logo -->
+    FZ<em> · ER-RKABI</em><div class="npulse"></div>
+  </a>
+  <ul class="nlinks">
+    <li><a href="#about">À Propos</a></li>
+    <li><a href="#education">Formation</a></li>
+    <li><a href="#experience">Expérience</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#cv">CV</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nright">
+    <div class="theme-sw" id="tsw" title="Changer le thème"></div>
+    <div class="nhbg" id="hbg"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- Mobile nav -->
+<div id="mobnav">
+  <a href="#about">À Propos</a>
+  <a href="#education">Formation</a>
+  <a href="#experience">Expérience</a>
+  <a href="#skills">Compétences</a>
+  <a href="#blog">Blog</a>
+  <a href="#cv">CV</a>
+  <a href="#contact">Contact</a>
+  <div class="mob-soc">
+    <a href="https://linkedin.com/in/mauizol" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    <a href="mailto:fatimazahra.errkabi@gmail.com"><i class="fas fa-envelope"></i></a>
   </div>
 </div>
 
-      <div class="card">
-        <h3>Bases de Données & Bureautique</h3>
-        <p>- SQL (Gestion et requêtage de bases de données)<br>- Excel, VBA (Automatisation et analyse de données)</p>
-  <button class="toggle-btn">Plus de détails</button>
-  <div class="details">
-    <p>Je peux contribuer à des projets nécessitant la programmation de cartes Arduino, la conception avec VHDL pour des FPGA, ou la mise en œuvre d'automatismes via TIA Portal ou EcoStruxure. Je maîtrise aussi les bases du développement avec Python, C/C++ et JavaScript, et je suis capable de gérer des bases de données avec SQL ou d'automatiser des tâches sur Excel avec VBA.</p>
-  </div>
+<!-- ══════════════════════════════════════════════════════
+     SECTION INDICATOR (right side dots)
+══════════════════════════════════════════════════════════ -->
+<div id="sec-ind">
+  <div class="sec-dot" data-label="Accueil" data-sec="hero"></div>
+  <div class="sec-dot" data-label="À Propos" data-sec="about"></div>
+  <div class="sec-dot" data-label="Formation" data-sec="education"></div>
+  <div class="sec-dot" data-label="Expérience" data-sec="experience"></div>
+  <div class="sec-dot" data-label="Compétences" data-sec="skills"></div>
+  <div class="sec-dot" data-label="Blog" data-sec="blog"></div>
+  <div class="sec-dot" data-label="CV" data-sec="cv"></div>
+  <div class="sec-dot" data-label="Contact" data-sec="contact"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <canvas id="hc"></canvas>
+  <div class="strata" id="strata"></div>
+  <div class="hexbg" id="hexbg"></div>
+
+  <div class="hero-inner W">
+    <!-- LEFT COLUMN -->
+    <div>
+      <div class="hero-eyebrow">
+        <div class="eyebrow-pill">
+          <div class="epill-dot"></div>
+          Disponible · Marrakech, Maroc 🇲🇦
+        </div>
       </div>
 
-      <div class="card">
-        <h3>Simulation & Analyse des Systèmes</h3>
-        <p>- MATLAB/Simulink (Modélisation et simulation de systèmes électriques et automatiques)<br>- PSCAD (Simulation de réseaux électriques)<br>- PSpice & LTspice (Simulation de circuits électroniques) </p>
-      </div>
-      <div class="card">
+      <h1 class="hero-hn">
+        <span class="l1">Fatima-Zahra</span>
+        <span class="l2">ER-RKABI</span>
+      </h1>
 
-        <h3> Conception & Modélisation</h3>
-        <p>- SolidWorks (Conception 3D industrielle)<br>- AutoCAD (CAO, schémas électriques)<br>- Dialux(Conception et simulation d’éclairage)<br>- EPLAN Electric P8 (Schémas électriques industriels) </p>
-<button class="toggle-btn">Plus de détails</button>
-  <div class="details">
-    <p>Je peux contribuer à des projets intégrant la programmation de cartes Arduino, la conception logique avec VHDL pour FPGA, ou l’automatisation industrielle via TIA Portal et EcoStruxure. Je suis à l’aise avec le développement en Python, C/C++ et JavaScript, ainsi qu’avec la gestion de bases de données en SQL et l’automatisation sur Excel avec VBA. J’ai également des bases solides en conception 3D et schémas électriques grâce à SolidWorks, AutoCAD, EPLAN Electric P8 et Dialux.</p>
-  </div>
-
-      </div>
-
-      <div class="card">
-        <h3>Soft skills</h3>
-        <p>Leadership<br>travail en équipe<br>gestion de temps<br>public speaking</p>
-<button class="toggle-btn">Plus de détails</button>
-  <div class="details">
-    <p>Je peux contribuer à des projets intégrant la programmation de cartes Arduino, la conception logique avec VHDL pour FPGA, ou l’automatisation industrielle via TIA Portal et EcoStruxure. Je suis à l’aise avec le développement en Python, C/C++ et JavaScript, ainsi qu’avec la gestion de bases de données en SQL et l’automatisation sur Excel avec VBA. J’ai également des bases solides en conception 3D et schémas électriques grâce à SolidWorks, AutoCAD, EPLAN Electric P8 et Dialux.</p>
-  </div>
+      <div class="hero-roles">
+        <div class="hero-role-line">
+          <span class="role-ico"></span>
+          Ingénieure d'État · EMI · Génie Minier
+          <span class="role-tag">Promo 2025</span>
+        </div>
+        <div class="hero-role-line">
+          <span class="role-ico"></span>
+          Corporate Internal Auditor
+          <span class="role-tag" style="border-color:rgba(184,132,58,.3);background:rgba(184,132,58,.1);color:var(--gl)">Managem Group</span>
+        </div>
       </div>
 
+      <!-- Typewriter zone -->
+      <div class="hero-bio">
+        Spécialisée en <mark>exploitation minière souterraine</mark>, analyse géomécanique par éléments finis et planification de production à grande profondeur. Aujourd'hui <mark>auditrice interne</mark> chez <mark>Managem Group</mark>, j'applique la rigueur de l'ingénierie au service de la gouvernance et des critères <mark>ESG</mark>.
+      </div>
 
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-p" data-mag>
+          <i class="fas fa-paper-plane"></i>Me Contacter
+        </a>
+        <a href="#cv" class="btn btn-s" data-mag>
+          <i class="fas fa-file-alt"></i>Voir le CV
+        </a>
+        <a href="#blog" class="btn btn-s" data-mag>
+          <i class="fas fa-pen-nib"></i>Mon Blog
+        </a>
+      </div>
+
+      <div class="hero-soc">
+        <a href="https://linkedin.com/in/mauizol" target="_blank" class="hs" title="LinkedIn">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="mailto:fatimazahra.errkabi@gmail.com" class="hs" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="#blog" class="hs" title="Blog">
+          <i class="fas fa-pen-nib"></i>
+        </a>
+        <a href="#skills" class="hs" title="Compétences">
+          <i class="fas fa-hard-hat"></i>
+        </a>
+        <!-- 📸 RÉSEAU SOCIAL SUPPLÉMENTAIRE : remplacez # par votre URL
+        <a href="https://researchgate.net/profile/..." target="_blank" class="hs" title="ResearchGate">
+          <i class="fab fa-researchgate"></i>
+        </a>
+        -->
+      </div>
     </div>
-  </section>
 
+    <!-- RIGHT COLUMN — PHOTO -->
+    <div class="hero-right">
+      <div class="pframe">
+        <!--
+          ══════════════════════════════════════════════════════════════
+          📸 PHOTO PRINCIPALE — HÉRO
+          ══════════════════════════════════════════════════════════════
+          Pour ajouter votre photo, remplacez la div.pframe-inner par :
+
+          <img src="VOTRE_PHOTO_HERO.jpg"
+               alt="Fatima-Zahra ER-RKABI"
+               style="width:100%;height:100%;object-fit:cover;object-position:top center">
+
+          ✅ Format : JPG ou WebP
+          ✅ Dimensions : minimum 800 × 1000 px (ratio 4:5)
+          ✅ Style : portrait professionnel, fond neutre ou mine
+          ✅ Taille fichier : < 500 Ko pour la performance web
+          ══════════════════════════════════════════════════════════════
+        -->
+        <div class="pframe-inner">
+          <div class="ph-placeholder-icon"><i class="fas fa-user-circle"></i></div>
+          <img src="VOTRE_PHOTO_HERO.jpeg"
+               alt="Fatima-Zahra ER-RKABI"
+               style="width:120%;height:120%;object-fit:cover;object-position:top center">
+        </div>
+      </div>
+
+      <!-- Floating info cards -->
+      <div class="fc fc-a">
+        <div class="fc-label">Profondeur max</div>
+        <div class="fc-val">428<span style="font-size:.8rem">m</span></div>
+        <div class="fc-tag">Mine souterraine · Sel gemme</div>
+      </div>
+      <div class="fc fc-b">
+        <div class="fc-label">Diplôme</div>
+        <div class="fc-val">EMI</div>
+        <div class="fc-tag">Ingénieure d'État · Promo 2025</div>
+      </div>
+      <div class="fc fc-c">
+        <div class="fc-label">Poste actuel</div>
+        <div class="fc-val" style="font-size:.95rem;line-height:1.3">Managem<br><span style="color:var(--t)">Group</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="scrlarr">
+    <div class="arr-box"><div class="arr-dot"></div></div>
+    <span>Défiler</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     TICKER / MARQUEE
+══════════════════════════════════════════════════════════ -->
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker">
+    <span class="ticker-item">⛏ Génie Minier<span class="sep">◆</span></span>
+    <span class="ticker-item">🪨 Géomécanique<span class="sep">◆</span></span>
+    <span class="ticker-item">📊 Planification Minière<span class="sep">◆</span></span>
+    <span class="ticker-item">🔍 Audit Interne<span class="sep">◆</span></span>
+    <span class="ticker-item">🌍 SIG & ArcGIS<span class="sep">◆</span></span>
+    <span class="ticker-item">📐 Phase²<span class="sep">◆</span></span>
+    <span class="ticker-item">💎 Datamine Studio<span class="sep">◆</span></span>
+    <span class="ticker-item">🐍 Python & SQL<span class="sep">◆</span></span>
+    <span class="ticker-item">🛡 Gestion des Risques<span class="sep">◆</span></span>
+    <span class="ticker-item">🌿 ESG & Développement Durable<span class="sep">◆</span></span>
+    <span class="ticker-item">⛏ Génie Minier<span class="sep">◆</span></span>
+    <span class="ticker-item">🪨 Géomécanique<span class="sep">◆</span></span>
+    <span class="ticker-item">📊 Planification Minière<span class="sep">◆</span></span>
+    <span class="ticker-item">🔍 Audit Interne<span class="sep">◆</span></span>
+    <span class="ticker-item">🌍 SIG & ArcGIS<span class="sep">◆</span></span>
+    <span class="ticker-item">📐 Phase²<span class="sep">◆</span></span>
+    <span class="ticker-item">💎 Datamine Studio<span class="sep">◆</span></span>
+    <span class="ticker-item">🐍 Python & SQL<span class="sep">◆</span></span>
+    <span class="ticker-item">🛡 Gestion des Risques<span class="sep">◆</span></span>
+    <span class="ticker-item">🌿 ESG & Développement Durable<span class="sep">◆</span></span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     KEY NUMBERS STRIP
+══════════════════════════════════════════════════════════ -->
+<div class="numbers-strip" data-r>
+  <div class="numbers-inner">
+    <div class="num-item">
+      <span class="num-val"><span data-count="428" class="cnt-n">0</span><span class="num-unit">m</span></span>
+      <span class="num-label">Profondeur maximale</span>
+      <span class="num-desc">Mine de sel souterraine · Mohammedia</span>
+    </div>
+    <div class="num-item">
+      <span class="num-val"><span data-count="5" class="cnt-n">0</span><span class="num-unit">+</span></span>
+      <span class="num-label">Expériences terrain</span>
+      <span class="num-desc">Stages & emploi · Maroc & Sahara</span>
+    </div>
+    <div class="num-item">
+      <span class="num-val"><span data-count="6" class="cnt-n">0</span><span class="num-unit">+</span></span>
+      <span class="num-label">Certifications</span>
+      <span class="num-desc">Leadership · Data · Communication</span>
+    </div>
+    <div class="num-item">
+      <span class="num-val"><span data-count="3" class="cnt-n">0</span><span class="num-unit"></span></span>
+      <span class="num-label">Langues maîtrisées</span>
+      <span class="num-desc">Arabe · Français · Anglais</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     À PROPOS
+══════════════════════════════════════════════════════════ -->
+<section id="about">
+  <div class="W">
+    <div class="about-g">
+      <!-- Photo portrait -->
+      <div class="ap-wrap" data-r="l">
+        <div class="ap-main">
+          <div class="ap-ring"></div>
+          <div class="ap-ring"></div>
+          <!--
+            ════════════════════════════════════════════════════════════
+            📸 PHOTO PORTRAIT — SECTION À PROPOS
+            ════════════════════════════════════════════════════════════
+            Remplacez le contenu ci-dessous par :
+
+            <img src="VOTRE_PHOTO_PORTRAIT.jpeg"
+                 alt="Fatima-Zahra ER-RKABI"
+                 style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:24px">
+
+            ✅ Format : JPG ou WebP
+            ✅ Dimensions : minimum 600 × 800 px (ratio 3:4)
+            ✅ Style : portrait semi-formel, tenue professionnelle
+            ✅ Astuce : Fond sobre (bureau, laboratoire, site minier)
+            ════════════════════════════════════════════════════════════
+          -->
+          <div class="ap-main-placeholder">
+            <i class="fas fa-portrait"></i>
+            <img src="VOTRE_PHOTO_PORTRAIT.jpeg"
+                 alt="Fatima-Zahra ER-RKABI"
+                 style="width:100%;height:170%;object-fit:cover;object-position:top center;border-radius:24px">
+          </div>
+        </div>
+        <div class="ap-badge">
+          <div class="apb-n" data-count="3">0</div>
+          <div class="apb-t">ans de formation<br>d'excellence</div>
+        </div>
+      </div>
+
+      <!-- Text content -->
+      <div>
+        <div class="lbl" data-r data-d="1">À Propos de Moi</div>
+        <h2 class="ttl" data-r data-d="2">Ingénieure <em>des profondeurs</em>,<br>analyste des risques</h2>
+        <div data-r data-d="3" class="about-body">
+          <p>Diplômée en <strong>Génie Minéral – option Minier</strong> de l'École Mohammadia d'Ingénieurs, j'ai bâti mon expertise au carrefour de la géomécanique, de la planification souterraine et de l'analyse de données. Mon stage PFE m'a conduite jusqu'à <strong>428 mètres sous terre</strong> pour modéliser la stabilité des massifs rocheux.</p>
+          <p>Après des expériences formatrices à la <strong>Société de Sel de Mohammedia</strong> et chez <strong>OCP Group – Phosboucraa</strong>, j'applique aujourd'hui ma rigueur analytique en tant qu'<strong>Auditrice Interne Corporate</strong> chez Managem Group à Marrakech.</p>
+          <p>Convaincue que l'ingénierie est un vecteur de transformation durable, je partage mes connaissances techniques dans ce blog et m'engage dans le développement de l'industrie minière africaine.</p>
+        </div>
+        <div class="tag-cloud" data-r data-d="4">
+          <span class="tag">⛏ Mine souterraine</span>
+          <span class="tag">🪨 Géomécanique</span>
+          <span class="tag">📊 Planification minière</span>
+          <span class="tag">🌍 ArcGIS / SIG</span>
+          <span class="tag">🔍 Audit interne</span>
+          <span class="tag">💡 Faisabilité</span>
+          <span class="tag">🛡 Gestion risques</span>
+          <span class="tag">🐍 Python & SQL</span>
+          <span class="tag">🌿 ESG</span>
+        </div>
+        <div class="stats-row" data-r data-d="5">
+          <div class="stat">
+            <span class="stat-n" data-count="4">0</span>
+            <span class="stat-l">Stages réalisés</span>
+          </div>
+          <div class="stat">
+            <span class="stat-n" data-count="6">0</span>
+            <span class="stat-l">Certifications</span>
+          </div>
+          <div class="stat">
+            <span class="stat-n" data-count="3">0</span>
+            <span class="stat-l">Langues</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     FORMATION ACADÉMIQUE
+══════════════════════════════════════════════════════════ -->
 <section id="education">
-    <h2>Formation</h2>
-    <div class="education">
-      <div class="card">
-        <h3>Diplôme du baccalauréat</h3>
-        <p>Lycée qualifiant EL MANSOUR DAHBI Tissa - 2019 / 2020</p>
-        <p>Diplôme du baccalauréat en sciences mathématiques A avec une mention Très bien.</p>
+  <div class="W">
+    <div class="lbl" data-r>Formation Académique</div>
+    <h2 class="ttl" data-r data-d="1">Un parcours <em>d'excellence</em></h2>
+    <p class="sub" data-r data-d="2">De Bouizakarne à Rabat, un itinéraire jalonné de rigueur scientifique et de distinctions académiques.</p>
+
+    <div class="edu-timeline">
+
+      <!-- EMI -->
+      <div class="edu-item" data-r>
+        <div class="edu-card-wrap">
+          <div class="edu-card">
+            <div class="edu-yr">2022 – 2025</div>
+            <div class="edu-school">École Mohammadia d'Ingénieurs (EMI)</div>
+            <div class="edu-deg">Ingénieure d'État · Génie Minéral · Option Minier</div>
+            <div class="edu-info">Rabat, Maroc · Géomécanique · Planification minière · SIG · Gestion de projet · Faisabilité technico-économique</div>
+            <div class="edu-badge-r"><i class="fas fa-award"></i> Diplôme d'Ingénieur d'État</div>
+            <div class="edu-imgs">
+              <!--
+                📸 IMAGES EMI — remplacez chaque .edu-img par :
+                <div class="edu-img">
+                  <img src="EMI_CAMPUS.jpg" alt="EMI campus"
+                       style="width:100%;height:100%;object-fit:cover;border-radius:8px">
+                </div>
+                Images suggérées : campus EMI, laboratoires, amphithéâtre, promo
+              -->
+              <div class="edu-img"><i class="fas fa-university"></i><span>EMI campus</span></div>
+              <div class="edu-img"><i class="fas fa-graduation-cap"></i><span>Cérémonie</span></div>
+              <div class="edu-img"><i class="fas fa-users"></i><span>Promo 2025</span></div>
+              <div class="edu-img"><i class="fas fa-flask"></i><span>Laboratoires</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="edu-node"><div class="edu-dot"></div></div>
+        <div class="edu-spacer"></div>
       </div>
-      <div class="card">
-        <h3>Classes préparatoires Scientifiques</h3>
-        <p>Lycée Charif Al Idrissi Taza - 2020 - 2022</p>
-        <p>Diplôme des classes préparatoires aux grandes écoles d’ingénieurs, filière Mathématiques physique.</p>
+
+      <!-- CPGE -->
+      <div class="edu-item" data-r data-d="2">
+        <div class="edu-spacer"></div>
+        <div class="edu-node"><div class="edu-dot"></div></div>
+        <div class="edu-card-wrap">
+          <div class="edu-card">
+            <div class="edu-yr">2020 – 2022</div>
+            <div class="edu-school">CPGE Bab Essahra · Guelmim</div>
+            <div class="edu-deg">Classes Préparatoires Grandes Écoles · Filière PSI</div>
+            <div class="edu-info">Guelmim, Maroc · Mathématiques · Physique · Sciences de l'Ingénieur · Formation intensive 2 ans</div>
+            <div class="edu-badge-r"><i class="fas fa-brain"></i> Admise en Grande École d'Ingénieurs</div>
+            <div class="edu-imgs">
+              <!--
+                📸 IMAGES CPGE — remplacez chaque .edu-img par :
+                <div class="edu-img">
+                  <img src="CPGE_GUELMIM.jpg" alt="CPGE Bab Essahra"
+                       style="width:100%;height:100%;object-fit:cover;border-radius:8px">
+                </div>
+              -->
+              <div class="edu-img"><i class="fas fa-school"></i><span>CPGE Bab Essahra</span></div>
+              <div class="edu-img"><i class="fas fa-atom"></i><span>Physique</span></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3>Ecole Mohammadia d'Ingénieurs</h3>
-        <p>Rabat - 2022 - 2025</p>
-        <p>Génie électrique. Elève ingénieur en Génie Eléctrique de l'Ecole Mohammadia d'Ingénieurs.</p>
+
+      <!-- BAC -->
+      <div class="edu-item" data-r data-d="3">
+        <div class="edu-card-wrap">
+          <div class="edu-card">
+            <div class="edu-yr">2020</div>
+            <div class="edu-school">Lycée Qualifiant Bouizakarne · Guelmim</div>
+            <div class="edu-deg">Baccalauréat · Sciences de la Vie et de la Terre (SVT)</div>
+            <div class="edu-info">Bouizakarne, Guelmim, Maroc · Mention <strong style="color:var(--g)">Très Bien</strong></div>
+            <div class="edu-badge-r"><i class="fas fa-star"></i> Mention Très Bien — Distinction maximale</div>
+            <div class="edu-imgs">
+              <!--
+                📸 IMAGES BAC — remplacez par vos photos :
+                Diplôme baccalauréat, photo de la ville, remise des diplômes
+              -->
+              <div class="edu-img"><i class="fas fa-scroll"></i><span>Diplôme Bac</span></div>
+              <div class="edu-img"><i class="fas fa-map-pin"></i><span>Bouizakarne</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="edu-node"><div class="edu-dot"></div></div>
+        <div class="edu-spacer"></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     EXPÉRIENCE PROFESSIONNELLE
+══════════════════════════════════════════════════════════ -->
+<section id="experience">
+  <div class="W">
+    <div class="lbl" data-r>Expérience Professionnelle</div>
+    <h2 class="ttl" data-r data-d="1">Du terrain <em>aux bureaux d'analyse</em></h2>
+    <p class="sub" data-r data-d="2">Des galeries souterraines aux sites industriels, 5 expériences qui ont forgé ma vision de l'ingénierie.</p>
+
+    <div class="bento">
+
+      <!-- MANAGEM GROUP (grande carte principale) -->
+      <div class="bc bc-main" data-r data-d="2">
+        <div class="bci">
+          <div class="bc-hdr">
+            <div class="bc-co-wrap">
+              <div class="bc-logo">
+                <!--
+                  📸 LOGO MANAGEM GROUP
+                  Remplacez par :
+                  <img src="MANAGEM_LOGO.png" alt="Managem Group"
+                       style="width:100%;height:100%;object-fit:contain;padding:6px">
+                  Logo officiel : https://www.managemgroup.com
+                  Format recommandé : PNG fond transparent, 200×200px min
+                -->
+                <i class="fas fa-building"></i>
+              </div>
+              <div>
+                <div class="bc-co">Managem Group</div>
+                <div class="bc-role">Corporate Internal Auditor</div>
+              </div>
+            </div>
+            <div class="bc-meta-r">
+              <div class="bc-dur">2025 – Présent</div>
+              <div class="bc-loc"><i class="fas fa-map-marker-alt"></i> Marrakech</div>
+              <div class="bc-type bt-cdi"><i class="fas fa-briefcase"></i>CDI</div>
+            </div>
+          </div>
+          <ul class="bc-tasks">
+            <li>Conduite d'audits internes dans les entités du groupe au niveau Corporate</li>
+            <li>Évaluation des dispositifs de contrôle interne et processus de gestion des risques opérationnels</li>
+            <li>Rédaction de rapports d'audit avec recommandations stratégiques et plans d'action ciblés</li>
+            <li>Contribution à l'amélioration continue de la gouvernance et des indicateurs ESG du groupe</li>
+          </ul>
+          <div class="bc-tags">
+            <span class="btag">Audit interne</span>
+            <span class="btag">Contrôle interne</span>
+            <span class="btag">Risques opérationnels</span>
+            <span class="btag">ESG</span>
+            <span class="btag">Gouvernance</span>
+          </div>
+        </div>
+        <div class="bc-imgs">
+          <!--
+            📸 IMAGES MANAGEM GROUP
+            Remplacez chaque slot par :
+            <div class="bc-img-sl">
+              <img src="MANAGEM_SIEGE.jpg" alt="Siège Managem"
+                   style="width:100%;height:100%;object-fit:cover">
+            </div>
+            Images suggérées : logo haute résolution, siège social Marrakech, équipe audit
+          -->
+          <div class="bc-img-sl"><i class="fas fa-image"></i><span>Logo Managem</span></div>
+          <div class="bc-img-sl"><i class="fas fa-image"></i><span>Siège social</span></div>
+          <div class="bc-img-sl"><i class="fas fa-image"></i><span>Équipe audit</span></div>
+        </div>
+      </div>
+
+      <!-- PFE — Société de Sel de Mohammedia -->
+      <div class="bc bc-pfe" data-r data-d="3">
+        <div class="bci">
+          <div class="bc-hdr">
+            <div class="bc-co-wrap">
+              <div class="bc-logo">
+                <!--
+                  📸 LOGO SOCIÉTÉ DE SEL DE MOHAMMEDIA
+                  Remplacez par :
+                  <img src="SEL_MOHAMMEDIA_LOGO.png" alt="Sel Mohammedia"
+                       style="width:100%;height:100%;object-fit:contain;padding:6px">
+                -->
+                <i class="fas fa-gem"></i>
+              </div>
+              <div>
+                <div class="bc-co">Sté de Sel de Mohammedia</div>
+                <div class="bc-role">Stage PFE · Géomécanique & Planification</div>
+              </div>
+            </div>
+            <div class="bc-meta-r">
+              <div class="bc-dur">Fév – Mai 2025 · 4 mois</div>
+              <div class="bc-loc"><i class="fas fa-map-marker-alt"></i> Mohammedia</div>
+              <div class="bc-type bt-pfe">PFE</div>
+            </div>
+          </div>
+          <div class="bc-q">"Stabilité du massif rocheux et planification de la production de sel gemme dans la zone d'extension Est · 428m de profondeur"</div>
+          <ul class="bc-tasks">
+            <li>Chronométrage des cycles de production souterraine à <strong>428 m</strong> de profondeur</li>
+            <li>Analyse par <strong>éléments finis</strong> (Phase²) des chambres & piliers</li>
+            <li>Planification avec <strong>Datamine Studio</strong> RM, UG & EPS</li>
+            <li>Étude technico-économique de faisabilité complète</li>
+          </ul>
+          <div class="bc-tags">
+            <span class="btag">Phase²</span>
+            <span class="btag">Datamine</span>
+            <span class="btag">EPS</span>
+            <span class="btag">MEF</span>
+            <span class="btag">Sel gemme</span>
+          </div>
+        </div>
+        <div class="bc-imgs">
+          <!--
+            📸 IMAGES PFE — MINE DE SEL
+            Images suggérées : galerie souterraine à 428m, modèle Phase², plan Datamine,
+            équipements de forage, piliers de sel, carte géologique
+            <div class="bc-img-sl">
+              <img src="MINE_UNDERGROUND.jpg" alt="Mine souterraine 428m"
+                   style="width:100%;height:100%;object-fit:cover">
+            </div>
+          -->
+          <div class="bc-img-sl"><i class="fas fa-image"></i><span>Mine 428m</span></div>
+          <div class="bc-img-sl"><i class="fas fa-image"></i><span>Phase² model</span></div>
+          <div class="bc-img-sl"><i class="fas fa-image"></i><span>Plan Datamine</span></div>
+        </div>
+      </div>
+
+      <!-- OCP — Phosboucraa -->
+      <div class="bc bc-ocp" data-r data-d="4">
+        <div class="bci">
+          <div class="bc-hdr">
+            <div class="bc-co-wrap">
+              <div class="bc-logo">
+                <!--
+                  📸 LOGO OCP GROUP / PHOSBOUCRAA
+                  Remplacez par :
+                  <img src="OCP_LOGO.png" alt="OCP Group"
+                       style="width:100%;height:100%;object-fit:contain;padding:6px">
+                  Logo officiel : https://www.ocpgroup.ma
+                -->
+                <i class="fas fa-industry"></i>
+              </div>
+              <div>
+                <div class="bc-co">OCP Group — Phosboucraa</div>
+                <div class="bc-role">Stage PFA · Exploitation Phosphates</div>
+              </div>
+            </div>
+            <div class="bc-meta-r">
+              <div class="bc-dur">Juil – Août 2024 · 2 mois</div>
+              <div class="bc-loc"><i class="fas fa-map-marker-alt"></i> Laâyoune</div>
+              <div class="bc-type bt-pfa">PFA</div>
+            </div>
+          </div>
+          <ul class="bc-tasks">
+            <li>Participation aux activités du site minier Phosboucraa</li>
+            <li>Analyse des procédés d'exploitation et traitement des phosphates</li>
+            <li>Étude de la chaîne de valeur du phosphate marocain</li>
+          </ul>
+          <div class="bc-tags">
+            <span class="btag">Phosphate</span>
+            <span class="btag">Exploitation</span>
+            <span class="btag">Traitement</span>
+            <span class="btag">OCP Group</span>
+          </div>
+        </div>
+        <div class="bc-imgs">
+          <!--
+            📸 IMAGES OCP PHOSBOUCRAA
+            Images suggérées : site Phosboucraa (Laâyoune), convoyeur phosphate,
+            logo OCP, paysage désertique du Sahara occidental
+          -->
+          <div class="bc-img-sl"><i class="fas fa-image"></i><span>Logo OCP</span></div>
+          <div class="bc-img-sl"><i class="fas fa-image"></i><span>Phosboucraa site</span></div>
+        </div>
+      </div>
+
+      <!-- ABHS — Sebou -->
+      <div class="bc bc-s1" data-r data-d="3">
+        <div class="bci" style="display:flex;flex-direction:column;justify-content:center">
+          <div class="bc-logo" style="margin-bottom:.9rem">
+            <!--
+              📸 LOGO ABHS SEBOU
+              <img src="ABHS_LOGO.png" alt="ABHS Sebou" style="width:100%;height:100%;object-fit:contain;padding:4px">
+            -->
+            <i class="fas fa-water"></i>
+          </div>
+          <div class="bc-co" style="font-size:1rem">ABHS — Sebou</div>
+          <div class="bc-role" style="font-size:.73rem;margin:.3rem 0 .5rem">Initiation · Ressources hydriques</div>
+          <div class="bc-dur" style="font-size:.62rem">Juil 2023 · 1 mois · Fès</div>
+          <div class="bc-type bt-ini" style="margin-top:.8rem;width:fit-content">Stage Initiation</div>
+        </div>
+      </div>
+
+      <!-- Forage Zouhour -->
+      <div class="bc bc-s2" data-r data-d="4">
+        <div class="bci" style="display:flex;flex-direction:column;justify-content:center">
+          <div class="bc-logo" style="margin-bottom:.9rem">
+            <!--
+              📸 LOGO FORAGE ZOUHOUR
+              <img src="ZOUHOUR_LOGO.png" alt="Forage Zouhour" style="width:100%;height:100%;object-fit:contain;padding:4px">
+            -->
+            <i class="fas fa-drill"></i>
+          </div>
+          <div class="bc-co" style="font-size:1rem">Forage Zouhour</div>
+          <div class="bc-role" style="font-size:.73rem;margin:.3rem 0 .5rem">Initiation · Forage hydrogéologique</div>
+          <div class="bc-dur" style="font-size:.62rem">Août 2023 · 1 mois · Aït Melloul</div>
+          <div class="bc-type bt-ini" style="margin-top:.8rem;width:fit-content">Stage Initiation</div>
+        </div>
+      </div>
+
+      <!-- Compteur -->
+      <div class="bc bc-s3" data-r data-d="5" style="background:linear-gradient(135deg,var(--gdim),var(--tdim))">
+        <div class="bci" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.8rem;height:100%">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:3.5rem;font-weight:900;background:linear-gradient(135deg,var(--g),var(--t));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1">5</div>
+          <div style="font-size:.82rem;color:var(--tx2);line-height:1.65">Expériences<br>professionnelles<br><span style="font-size:.68rem;color:var(--tx3)">terrain & corporate</span></div>
+          <i class="fas fa-hard-hat" style="font-size:2rem;color:var(--g);opacity:.3"></i>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     COMPÉTENCES & OUTILS
+══════════════════════════════════════════════════════════ -->
+<section id="skills">
+  <div class="W">
+    <div class="lbl" data-r>Compétences & Outils</div>
+    <h2 class="ttl" data-r data-d="1">Arsenal <em>technique & humain</em></h2>
+
+    <div class="skills-layout">
+      <!-- Colonne 1 : barres de progression -->
+      <div>
+        <div class="sg" data-r data-d="2">
+          <div class="sg-ttl"><i class="fas fa-pickaxe"></i>Logiciels Miniers & SIG</div>
+          <div class="sbar-wrap">
+            <div class="sbar-hd"><span class="sbar-nm">Datamine Studio (RM, UG)</span><span class="sbar-pc">90%</span></div>
+            <div class="sbar-tr"><div class="sbar-fl" data-w="90"></div></div>
+          </div>
+          <div class="sbar-wrap">
+            <div class="sbar-hd"><span class="sbar-nm">Phase² — Méthode Éléments Finis</span><span class="sbar-pc">85%</span></div>
+            <div class="sbar-tr"><div class="sbar-fl" data-w="85"></div></div>
+          </div>
+          <div class="sbar-wrap">
+            <div class="sbar-hd"><span class="sbar-nm">ArcGIS / Systèmes d'Info. Géographique</span><span class="sbar-pc">80%</span></div>
+            <div class="sbar-tr"><div class="sbar-fl" data-w="80"></div></div>
+          </div>
+          <div class="sbar-wrap">
+            <div class="sbar-hd"><span class="sbar-nm">EPS (Mine Planning)</span><span class="sbar-pc">78%</span></div>
+            <div class="sbar-tr"><div class="sbar-fl" data-w="78"></div></div>
+          </div>
+          <div class="sbar-wrap">
+            <div class="sbar-hd"><span class="sbar-nm">Microsoft Office Suite</span><span class="sbar-pc">95%</span></div>
+            <div class="sbar-tr"><div class="sbar-fl" data-w="95"></div></div>
+          </div>
+        </div>
+
+        <div class="sg" data-r data-d="3">
+          <div class="sg-ttl"><i class="fas fa-code"></i>Programmation & Analyse de Données</div>
+          <div class="sbar-wrap">
+            <div class="sbar-hd"><span class="sbar-nm">Python</span><span class="sbar-pc">75%</span></div>
+            <div class="sbar-tr"><div class="sbar-fl" data-w="75"></div></div>
+          </div>
+          <div class="sbar-wrap">
+            <div class="sbar-hd"><span class="sbar-nm">SQL</span><span class="sbar-pc">70%</span></div>
+            <div class="sbar-tr"><div class="sbar-fl" data-w="70"></div></div>
+          </div>
+          <div class="sbar-wrap">
+            <div class="sbar-hd"><span class="sbar-nm">VBA / Automatisation Excel</span><span class="sbar-pc">72%</span></div>
+            <div class="sbar-tr"><div class="sbar-fl" data-w="72"></div></div>
+          </div>
+          <div class="sbar-wrap">
+            <div class="sbar-hd"><span class="sbar-nm">HTML / CSS / Web</span><span class="sbar-pc">65%</span></div>
+            <div class="sbar-tr"><div class="sbar-fl" data-w="65"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Colonne 2 : chips & langues -->
+      <div>
+        <div class="sg" data-r data-d="2">
+          <div class="sg-ttl"><i class="fas fa-cogs"></i>Expertise Technique</div>
+          <div class="hex-wrap">
+            <span class="hx"><i class="fas fa-mountain"></i><span>Mine souterraine</span></span>
+            <span class="hx"><i class="fas fa-drafting-compass"></i><span>Dimensionnement</span></span>
+            <span class="hx"><i class="fas fa-chart-line"></i><span>Analyse stabilité</span></span>
+            <span class="hx"><i class="fas fa-map"></i><span>Planification minière</span></span>
+            <span class="hx"><i class="fas fa-globe-africa"></i><span>SIG</span></span>
+            <span class="hx"><i class="fas fa-calculator"></i><span>Faisabilité technico-éco.</span></span>
+            <span class="hx"><i class="fas fa-search"></i><span>Audit interne</span></span>
+            <span class="hx"><i class="fas fa-shield-alt"></i><span>Gestion des risques</span></span>
+            <span class="hx"><i class="fas fa-database"></i><span>Analyse de données</span></span>
+            <span class="hx"><i class="fas fa-leaf"></i><span>ESG & Durabilité</span></span>
+            <span class="hx"><i class="fas fa-project-diagram"></i><span>Gestion de projet</span></span>
+            <span class="hx"><i class="fas fa-lightbulb"></i><span>Résolution de problèmes</span></span>
+          </div>
+        </div>
+
+        <div class="sg" data-r data-d="4">
+          <div class="sg-ttl"><i class="fas fa-language"></i>Langues</div>
+          <div class="lang-cards">
+            <div class="lang-card">
+              <!-- 📸 DRAPEAU : peut être remplacé par <img src="DRAPEAU_MA.svg" style="width:28px"> -->
+              <span class="lang-fl">🇲🇦</span>
+              <div class="lang-inf"><div class="lang-nm">Arabe</div><div class="lang-lv">Langue maternelle · C2</div></div>
+              <div class="lang-lvbar">
+                <div class="lbar on"></div><div class="lbar on"></div><div class="lbar on"></div>
+                <div class="lbar on"></div><div class="lbar on"></div>
+              </div>
+            </div>
+            <div class="lang-card">
+              <span class="lang-fl">🇫🇷</span>
+              <div class="lang-inf"><div class="lang-nm">Français</div><div class="lang-lv">Courant · C1</div></div>
+              <div class="lang-lvbar">
+                <div class="lbar on"></div><div class="lbar on"></div><div class="lbar on"></div>
+                <div class="lbar on"></div><div class="lbar"></div>
+              </div>
+            </div>
+            <div class="lang-card">
+              <span class="lang-fl">🇬🇧</span>
+              <div class="lang-inf"><div class="lang-nm">Anglais</div><div class="lang-lv">Courant · B2/C1</div></div>
+              <div class="lang-lvbar">
+                <div class="lbar on"></div><div class="lbar on"></div><div class="lbar on"></div>
+                <div class="lbar on"></div><div class="lbar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="projects">
-    <h2>Projets</h2>
-    <div class="projects">
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200" alt="Projet 1">
-        <h3>système intelligent contre les gaz toxiques</h3>
-        <p>Ce projet consiste en la conception d’un système intelligent de détection et de protection contre les gaz toxiques, basé sur des capteurs sensibles et une architecture de commande capable d’activer automatiquement des dispositifs de sécurité comme une alarme ou un système de ventilation</p>
+<!-- ══════════════════════════════════════════════════════
+     CERTIFICATIONS
+══════════════════════════════════════════════════════════ -->
+<section id="certifications">
+  <div class="W">
+    <div class="lbl" data-r>Certifications</div>
+    <h2 class="ttl" data-r data-d="1">Formation <em>continue</em></h2>
+    <div class="cert-gr" data-r data-d="2">
+      <div class="cert-c">
+        <div class="cert-ico">
+          <!--
+            📸 BADGE CERTIFICATION 1
+            <img src="LECTERA_BADGE_SPEAKER.png" alt="Lectera" style="width:100%;height:100%;object-fit:contain;padding:4px">
+          -->
+          <i class="fas fa-microphone"></i>
+        </div>
+        <div>
+          <div class="cert-is">Lectera</div>
+          <div class="cert-nm">Professional Speaker · Read People, Win Without a Fight</div>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200" alt="Projet 2">
-        <h3>Conception VLSI d'un multiplexeur 4:1 </h3>
-        <p>Ce projet porte sur la conception VLSI d’un multiplexeur 4:1 en technologie CMOS, visant à optimiser la surface, la vitesse de commutation et la consommation énergétique, à travers une modélisation schématique, une simulation logique et une implantation physique.</p>
+      <div class="cert-c">
+        <div class="cert-ico">
+          <!-- 📸 BADGE CERTIFICATION 2 : <img src="LECTERA_BADGE_DEI.png" ...> -->
+          <i class="fas fa-users"></i>
+        </div>
+        <div>
+          <div class="cert-is">Lectera</div>
+          <div class="cert-nm">Diversity & Inclusivity: Implementing DEI in the Company</div>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200" alt="Projet 2">
-        <h3>correction par le contrôleur PID</h3>
-        <p>Ce projet a pour objectif la mise en œuvre d’un système de correction automatique à l’aide d’un contrôleur PID, afin d’améliorer les performances dynamiques d’un procédé en termes de stabilité, temps de réponse et erreur de régime permanent.</p>
+      <div class="cert-c">
+        <div class="cert-ico">
+          <!-- 📸 BADGE CERTIFICATION 3 : <img src="HPLIFE_LEADERSHIP.png" ...> -->
+          <i class="fas fa-crown"></i>
+        </div>
+        <div>
+          <div class="cert-is">HP LIFE</div>
+          <div class="cert-nm">Leadership Efficace</div>
+        </div>
       </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x200" alt="Projet 2">
-        <h3>conception d'une lampe à base de l'eau salée</h3>
-        <p>ce projet consiste en la conception d’une lampe fonctionnant à base d’eau salée comme source d’électrolyte, permettant de produire de l’énergie électrique à partir d’une réaction électrochimique, dans une optique d’éclairage autonome, écologique et économique.</p>
+      <div class="cert-c">
+        <div class="cert-ico">
+          <!-- 📸 BADGE CERTIFICATION 4 : <img src="HPLIFE_DATA.png" ...> -->
+          <i class="fas fa-chart-bar"></i>
+        </div>
+        <div>
+          <div class="cert-is">HP LIFE</div>
+          <div class="cert-nm">Présenter des Données</div>
+        </div>
+      </div>
+      <div class="cert-c">
+        <div class="cert-ico">
+          <!-- 📸 BADGE CERTIFICATION 5 : <img src="HPLIFE_EMAIL.png" ...> -->
+          <i class="fas fa-envelope-open-text"></i>
+        </div>
+        <div>
+          <div class="cert-is">HP LIFE</div>
+          <div class="cert-nm">Les E-mails Professionnels</div>
+        </div>
+      </div>
+      <div class="cert-c">
+        <div class="cert-ico">
+          <!-- 📸 BADGE CERTIFICATION 6 : <img src="HPLIFE_IT.png" ...> -->
+          <i class="fas fa-laptop-code"></i>
+        </div>
+        <div>
+          <div class="cert-is">HP LIFE</div>
+          <div class="cert-nm">L'informatique au Service de Mon Entreprise</div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section id="certs">
-    <h2>Certifications</h2>
-    <div class="certs">
-      <div class="card">
-        <h3>Coordinate Reference Systems, Projections, and Spatial Data Representation -GEO University-</h3>
-        <p>Ce module traite des systèmes de référence de coordonnées, des projections cartographiques et des méthodes de représentation des données spatiales, essentielles pour l'analyse et la gestion des informations géospatiales.</p>
+<!-- ══════════════════════════════════════════════════════
+     CITATION / MANIFESTE
+══════════════════════════════════════════════════════════ -->
+<div class="quote-strip" data-r>
+  <div class="quote-inner">
+    <span class="q-mark">"</span>
+    <p class="q-text">
+      La mine n'est pas seulement une source de richesses minérales —<br>
+      c'est un laboratoire de <em>rigueur, de résilience et d'innovation</em>.
+    </p>
+    <div class="q-auth">
+      <div class="q-line"></div>
+      <span class="q-name">Fatima-Zahra ER-RKABI · Ingénieure EMI</span>
+      <div class="q-line"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     BLOG & PUBLICATIONS
+══════════════════════════════════════════════════════════ -->
+<section id="blog">
+  <div class="W">
+    <div class="lbl" data-r>Blog & Publications</div>
+    <h2 class="ttl" data-r data-d="1">Réflexions d'une <em>ingénieure du terrain</em></h2>
+    <p class="sub" data-r data-d="2">Des articles techniques nés de l'expérience réelle, sur la géomécanique, la planification minière et la transition énergétique.</p>
+
+    <div class="blog-grid">
+
+      <!-- Article 1 -->
+      <div class="blog-card" data-r data-d="2" onclick="openModal('b1')">
+            <div class="blog-thumb" style="padding:0;overflow:hidden">
+              <img src="ARTICLE1_GEOMECANIQUE.jpg"
+                   alt="Analyse de stabilité géomécanique"
+                   style="width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)">
+              <span class="b-cat" style="background:var(--g)">Géomécanique</span>
+            </div>
+        <div class="blog-body">
+          <div class="b-meta">
+            <span class="b-date">15 Janv. 2026</span>
+            <div class="b-sep"></div>
+            <span class="b-read">8 min de lecture</span>
+          </div>
+          <div class="b-ttl">Analyse de stabilité par éléments finis : retour d'expérience depuis la mine de sel de Mohammedia</div>
+          <div class="b-exc">À 428 mètres sous terre, chaque pilier raconte une histoire de contraintes et de résistance. Mon approche de l'analyse géomécanique par MEF avec Phase², appliquée au cas réel de Mohammedia...</div>
+          <div class="b-foot">
+            <div class="b-by">
+              <!--
+                📸 AVATAR AUTEUR
+                <img src="AVATAR_FZ_SMALL.jpg" alt="FZ" style="width:26px;height:26px;border-radius:50%;object-fit:cover;border:1px solid var(--g)">
+              -->
+              <div class="b-av">FZ</div>
+              <span class="b-nm">FZ ER-RKABI</span>
+            </div>
+            <div class="b-more">Lire <i class="fas fa-arrow-right"></i></div>
+          </div>
+        </div>
       </div>
-      <div class="card">
-        <h3> Leadership efficace -HP Life- </h3>
-        <p>Ce module explore les principes et techniques du leadership efficace, en mettant l'accent sur la gestion des équipes, la prise de décision stratégique et le développement des compétences pour inspirer et motiver les membres d'une organisation.</p>
+
+      <!-- Article 2 -->
+      <div class="blog-card" data-r data-d="3" onclick="openModal('b2')">
+                    <div class="blog-thumb" style="padding:0;overflow:hidden">
+              <img src="ARTICLE2_GEOMECANIQUE.jpg"
+                   alt="Analyse de stabilité géomécanique"
+                   style="width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)">
+              <span class="b-cat" style="background:var(--g)">Géomécanique</span>
+            </div>
+        <div class="blog-body">
+          <div class="b-meta">
+            <span class="b-date">3 Févr. 2026</span>
+            <div class="b-sep"></div>
+            <span class="b-read">10 min de lecture</span>
+          </div>
+          <div class="b-ttl">Datamine Studio : de la modélisation géologique à l'optimisation de l'extraction souterraine</div>
+          <div class="b-exc">Datamine Studio est bien plus qu'un logiciel de modélisation : c'est un outil de prise de décision stratégique. Du Block Model à la planification de production sur 5 ans...</div>
+          <div class="b-foot">
+            <div class="b-by">
+              <!-- 📸 AVATAR : même avatar que ci-dessus -->
+              <div class="b-av">FZ</div>
+              <span class="b-nm">FZ ER-RKABI</span>
+            </div>
+            <div class="b-more">Lire <i class="fas fa-arrow-right"></i></div>
+          </div>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>
-Management consulting essential training -Udemy- </h3>
-        <p>Ce module fournit les compétences et les outils essentiels pour exercer dans le domaine du conseil en management, en abordant les méthodologies d’analyse, de résolution de problèmes et de stratégie pour aider les entreprises à améliorer leur performance et leur efficacité.</p>
+      <!-- Article 3 -->
+      <div class="blog-card" data-r data-d="4" onclick="openModal('b3')">
+                    <div class="blog-thumb" style="padding:0;overflow:hidden">
+              <img src="ARTICLE3_GEOMECANIQUE.jpg"
+                   alt="Analyse de stabilité géomécanique"
+                   style="width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)">
+              <span class="b-cat" style="background:var(--g)">Géomécanique</span>
+            </div>
+        <div class="blog-body">
+          <div class="b-meta">
+            <span class="b-date">28 Janv. 2026</span>
+            <div class="b-sep"></div>
+            <span class="b-read">6 min de lecture</span>
+          </div>
+          <div class="b-ttl">Le rôle de l'ingénieure minière dans la transition énergétique : enjeux et opportunités au Maroc</div>
+          <div class="b-exc">La transition énergétique ne peut se faire sans mines. Cobalt, lithium, phosphates — les minerais critiques sont au cœur de l'électrification mondiale. Mon regard d'ingénieure marocaine...</div>
+          <div class="b-foot">
+            <div class="b-by">
+              <!-- 📸 AVATAR : même avatar FZ -->
+              <div class="b-av">FZ</div>
+              <span class="b-nm">FZ ER-RKABI</span>
+            </div>
+            <div class="b-more">Lire <i class="fas fa-arrow-right"></i></div>
+          </div>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>E-COMMERCE TRANING -MY Tindy-</h3>
-        <p>Cette formation couvre les principes fondamentaux du commerce électronique, y compris la création, la gestion et l'optimisation de plateformes en ligne, ainsi que les stratégies de marketing et de vente pour réussir dans le monde numérique.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     ACTIVITÉS PARASCOLAIRES
+══════════════════════════════════════════════════════════ -->
+<section id="activities">
+  <div class="W">
+    <div class="lbl" data-r>Activités Parascolaires</div>
+    <h2 class="ttl" data-r data-d="1">Au-delà des <em>amphithéâtres</em></h2>
+    <div class="act-g">
+      <div class="act-c" data-r data-d="2">
+        <div class="act-ic"><i class="fas fa-handshake"></i></div>
+        <!--
+          📸 LOGO CLUB (optionnel)
+          <img src="MCC_LOGO.png" alt="Mohammadia Consulting Club"
+               style="position:absolute;top:1.5rem;right:1.5rem;height:36px;opacity:.25">
+        -->
+        <div class="act-org">Mohammadia Consulting Club · EMI</div>
+        <div class="act-role">Chef de Cellule Sponsoring</div>
+        <div class="act-per">Octobre 2023 – Présent</div>
+        <div class="act-desc">Pilotage de la stratégie de partenariat et sponsoring du club. Démarchage d'entreprises, négociation de conventions de collaboration, gestion des relations institutionnelles. Développement du leadership commercial et de la communication corporate.</div>
       </div>
-  </section>
 
- <!-- Nouvelle section CV -->
-  <section id="cv-access">
-    <h2><i class="fas fa-file-alt"></i> Demander l'accès à mon CV</h2>
-    <form onsubmit="handleRequest(event)">
-      <input type="text" placeholder="Nom" required>
-      <input type="email" placeholder="Email" required>
-      <button type="submit">Demander l'accès</button>
-    </form>
-  </section>
+      <div class="act-c" data-r data-d="3">
+        <div class="act-ic"><i class="fas fa-star"></i></div>
+        <!--
+          📸 LOGO ASTRO EMI (optionnel)
+          <img src="ASTRO_EMI_LOGO.png" alt="AstroEMI" style="...">
+        -->
+        <div class="act-org">Club AstroEMI · École Mohammadia d'Ingénieurs</div>
+        <div class="act-role">Responsable d'Équipe Visite</div>
+        <div class="act-per">EMI · Rabat</div>
+        <div class="act-desc">Organisation et coordination de visites astronomiques et scientifiques pour les membres. Animation d'événements de vulgarisation STEM et développement de la culture scientifique au sein de l'école.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <form>
-      <input type="text" placeholder="Nom" required>
-      <input type="email" placeholder="Email" required>
-      <textarea placeholder="Message" required></textarea>
-      <button type="submit">Envoyer</button>
-    </form>
-  </section>
+<!-- ══════════════════════════════════════════════════════
+     CV
+══════════════════════════════════════════════════════════ -->
+<section id="cv">
+  <div class="W">
+    <div class="lbl" data-r>Curriculum Vitae</div>
+    <h2 class="ttl" data-r data-d="1">Mon <em>parcours en un document</em></h2>
+    <div class="cv-wrap" data-r data-d="2">
+      <div class="cv-left">
+        <!--
+          📸 APERÇU CV
+          Pour montrer une vraie vignette de votre CV, remplacez le .cv-mock par :
+          <div style="width:200px;border-radius:14px;overflow:hidden;transform:rotate(-4deg);box-shadow:0 24px 60px rgba(0,0,0,.4);transition:transform .6s">
+            <img src="CV_PREVIEW_PAGE1.png" alt="CV Fatima-Zahra ER-RKABI"
+                 style="width:100%;display:block">
+          </div>
+          Image : capture d'écran de votre CV en PDF, format A4 (210×297mm converti en ~800×1132px)
+        -->
+          <div style="width:200px;border-radius:14px;overflow:hidden;transform:rotate(-4deg);box-shadow:0 24px 60px rgba(0,0,0,.4);transition:transform .6s">
+            <img src="CV_PREVIEW_PAGE1.png" alt="CV Fatima-Zahra ER-RKABI"
+                 style="width:100%;display:block">
+          </div>
+        <div class="cv-pgs">
+          <div class="cv-pg on"></div>
+          <div class="cv-pg on"></div>
+          <div class="cv-pg on"></div>
+          <div class="cv-pg"></div>
+        </div>
+        <div class="cv-mock-lbl">Aperçu du document</div>
+      </div>
 
+      <div class="cv-right">
+        <div class="cv-ttl">Téléchargez ou consultez<br>mon CV complet</div>
+        <p class="cv-desc">Mon CV rassemble mon parcours académique d'élite, mes expériences terrain et mes compétences techniques en génie minier et audit interne. Disponible en PDF haute qualité.</p>
+        <div class="cv-btns">
+          <!--
+            📸 CV FICHIER
+            Remplacez href="#" par le vrai chemin de votre fichier PDF :
+            href="CV_FATIMAZAHRA_ERRKABI_2026.pdf"
+            ou un lien Google Drive : href="https://drive.google.com/file/d/VOTRE_ID/view"
+          -->
+          <a href="#" class="cvb cvb-dl" download>
+            <div class="cvb-ic"><i class="fas fa-download"></i></div>
+            <div>
+              <span class="cvb-main">Télécharger le CV</span>
+              <span class="cvb-sub">PDF · Mis à jour Janvier 2025</span>
+            </div>
+          </a>
+          <a href="#" class="cvb cvb-vw" target="_blank">
+            <div class="cvb-ic" style="background:var(--gdim)"><i class="fas fa-eye" style="color:var(--g)"></i></div>
+            <div>
+              <span class="cvb-main">Visualiser en ligne</span>
+              <span class="cvb-sub">S'ouvre dans un nouvel onglet</span>
+            </div>
+          </a>
+        </div>
+        <div class="cv-note"><i class="fas fa-lock"></i> Téléchargement sécurisé · Aucune donnée collectée</div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ══════════════════════════════════════════════════════
+     CONTACT
+══════════════════════════════════════════════════════════ -->
+<section id="contact">
+  <div class="W">
+    <div class="lbl" data-r>Contact</div>
+    <h2 class="ttl" data-r data-d="1">Travaillons <em>ensemble</em></h2>
+    <div class="contact-g">
+      <div>
+        <p class="ci-desc" data-r data-d="2">Ouverte aux opportunités professionnelles, aux collaborations de recherche, aux conférences et aux échanges académiques dans le domaine minier et de l'audit.</p>
+        <div data-r data-d="3">
+          <div class="ci-item">
+            <div class="ci-ic"><i class="fas fa-envelope"></i></div>
+            <div>
+              <div class="ci-l">Email</div>
+              <!-- 📸 EMAIL : remplacez par votre adresse réelle -->
+              <div class="ci-v">fatimazahra.errkabi@gmail.com</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-ic"><i class="fab fa-linkedin-in"></i></div>
+            <div>
+              <div class="ci-l">LinkedIn</div>
+              <!-- 📸 LINKEDIN : remplacez par votre URL complète -->
+              <div class="ci-v">linkedin.com/in/mauizol</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-ic"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <div class="ci-l">Localisation</div>
+              <div class="ci-v">Marrakech, Maroc 🇲🇦</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-ic"><i class="fas fa-briefcase"></i></div>
+            <div>
+              <div class="ci-l">Poste actuel</div>
+              <div class="ci-v">Corporate Internal Auditor · Managem Group</div>
+            </div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-ic"><i class="fas fa-clock"></i></div>
+            <div>
+              <div class="ci-l">Disponibilité réponse</div>
+              <div class="ci-v">Sous 48h ouvrables</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="form-bx" data-r data-d="3">
+        <div class="fg">
+          <div class="ff2">
+            <label class="fl">Prénom</label>
+            <input type="text" class="fi" placeholder="Votre prénom" id="f-prenom">
+          </div>
+          <div class="ff2">
+            <label class="fl">Nom</label>
+            <input type="text" class="fi" placeholder="Votre nom" id="f-nom">
+          </div>
+          <div class="ff2">
+            <label class="fl">Email</label>
+            <input type="email" class="fi" placeholder="email@exemple.com" id="f-email">
+          </div>
+          <div class="ff2">
+            <label class="fl">Entreprise</label>
+            <input type="text" class="fi" placeholder="Votre organisation" id="f-org">
+          </div>
+          <div class="ff2 full">
+            <label class="fl">Sujet</label>
+            <input type="text" class="fi" placeholder="Objet de votre message" id="f-sujet">
+          </div>
+          <div class="ff2 full">
+            <label class="fl">Message</label>
+            <textarea class="fta" placeholder="Décrivez votre projet, opportunité ou question..." id="f-msg"></textarea>
+          </div>
+        </div>
+        <button class="fsub" id="fsub" onclick="sendForm(this)">
+          <i class="fas fa-paper-plane"></i>Envoyer le Message
+        </button>
+        <!--
+          📩 INTÉGRATION FORMULAIRE
+          Pour recevoir les messages par email, connectez ce formulaire à :
+          - Formspree : https://formspree.io (gratuit)
+          - EmailJS : https://emailjs.com (gratuit)
+          - Netlify Forms (si hébergé sur Netlify)
+          Exemple Formspree : <form action="https://formspree.io/f/VOTRE_ID" method="POST">
+        -->
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ══════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="foot-inner">
+    <div>
+      <div class="foot-logo">FZ<em> · ER-RKABI</em></div>
+      <!-- 📸 LOGO FOOTER : <img src="LOGO_BLANC.png" alt="FZ ER-RKABI" style="height:26px;margin-top:.5rem"> -->
+      <div class="foot-soc" style="justify-content:flex-start;margin-top:.8rem">
+        <a href="https://linkedin.com/in/mauizol" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:fatimazahra.errkabi@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="#blog"><i class="fas fa-pen-nib"></i></a>
+      </div>
+    </div>
+    <div class="foot-center">
+      <div class="foot-copy">
+        © 2026 Fatima-Zahra ER-RKABI<br>
+        Ingénieure d'État EMI · Tous droits réservés
+      </div>
+      <div class="foot-copy" style="margin-top:.4rem;font-size:.6rem">
+        Conçu avec <span style="color:var(--g)">♥</span> · Marrakech, Maroc
+      </div>
+    </div>
+    <div>
+      <div class="foot-links">
+        <a href="#hero">Accueil</a>
+        <a href="#about">À Propos</a>
+        <a href="#blog">Blog</a>
+        <a href="#cv">CV</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-  <footer>
-    <p>&copy; 2025 Mohammed Jabbari. Tous droits réservés.</p>
-  </footer>
+<!-- ══════════════════════════════════════════════════════
+     BLOG MODAL
+══════════════════════════════════════════════════════════ -->
+<div id="modal-ovl" onclick="closeMdl(event)">
+  <div class="modal-box">
+    <div class="m-hd">
+      <div id="m-hd-ct"></div>
+      <div class="m-cl" onclick="closeMdl(null,1)"><i class="fas fa-times"></i></div>
+    </div>
+    <!--
+      📸 IMAGE BANNIÈRE MODALE
+      Après .m-hd, vous pouvez ajouter :
+      <div id="m-banner" style="height:260px;overflow:hidden;border-bottom:1px solid var(--bd)">
+        <img id="m-banner-img" src="" alt="" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      Puis dynamiquement assigner l'image selon l'article dans openModal()
+    -->
+    <div class="m-body" id="m-body"></div>
+  </div>
+</div>
 
+<!-- ══════════════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════════════════ -->
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const sections = document.querySelectorAll("section");
-    const header = document.querySelector("header");
-    const sideMenu = document.querySelector(".side-menu");
+/* ─── DONNÉES BLOG ──────────────────────────────────── */
+const BD={
+  b1:{
+    c:'Géomécanique',d:'15 Janvier 2026',
+    t:"Analyse de stabilité par éléments finis : retour d'expérience depuis la mine de sel de Mohammedia",
+    h:`<p>À 428 mètres sous terre, chaque pilier raconte une histoire de contraintes et de résistance. Lors de mon stage PFE, j'ai appliqué la méthode des éléments finis à la stabilité des chambres et piliers dans la zone d'extension Est de la mine de Mohammedia.</p>
+    <h3>Pourquoi les éléments finis en géomécanique ?</h3>
+    <p>La méthode des éléments finis (MEF) permet de modéliser le comportement des massifs rocheux sous les contraintes in situ, en prenant en compte la géométrie complexe des ouvrages, l'hétérogénéité géologique et les interactions structurales. J'ai utilisé <strong>Phase²</strong> (Rocscience), outil de référence internationale pour l'analyse géomécanique 2D.</p>
+    <h3>Méthodologie complète</h3>
+    <ul>
+      <li>Collecte et caractérisation des données géomécaniques : essais de compression simple et triaxiale, mesure des contraintes in situ par surcarottage</li>
+      <li>Construction du modèle Phase² : maillage éléments finis, conditions aux limites, propriétés mécaniques des matériaux</li>
+      <li>Analyse des résultats : cartographie des déformations plastiques, zones de plasticité, facteurs de sécurité des piliers</li>
+      <li>Calibration avec les observations terrain : fissures observées, mesures d'affaissement, comportement des piliers existants</li>
+    </ul>
+    <h3>Résultats et impact</h3>
+    <p>Les simulations ont permis d'identifier les zones critiques de la zone d'extension Est, de dimensionner les piliers pour garantir la stabilité à long terme tout en maximisant le taux de récupération du sel gemme. L'étude a directement alimenté les décisions de planification de production.</p>
+    <h3>Leçons clés</h3>
+    <p>La géomécanique est une science de l'incertitude maîtrisée. Le modèle n'est aussi fiable que ses données d'entrée. La calibration terrain reste indispensable pour transformer un modèle numérique en outil de décision opérationnel.</p>`
+  },
+  b2:{
+    c:'Planification Minière',d:'3 Février 2026',
+    t:"Datamine Studio : de la modélisation géologique à l'optimisation de l'extraction souterraine",
+    h:`<p>La planification minière est l'art de transformer un gisement en projet économiquement viable, techniquement sûr et environmentalement responsable. Lors de mon PFE, j'ai utilisé <strong>Datamine Studio RM et UG</strong> pour planifier l'extraction de sel gemme dans la zone d'extension Est.</p>
+    <h3>Du modèle géologique au modèle de blocs</h3>
+    <p>Datamine Studio RM permet de construire un modèle de blocs 3D à partir de données de forage et de levés géologiques. Pour le sel gemme, les paramètres clés sont la pureté NaCl (%), la densité et la structure des bancs géologiques.</p>
+    <ul>
+      <li>Importation et validation des données de forage (décollamatage, validation de cohérence)</li>
+      <li>Krigeage géostatistique pour l'estimation spatiale des teneurs</li>
+      <li>Classification des ressources et réserves selon les standards internationaux</li>
+      <li>Optimisation des contours d'extraction adaptée au contexte souterrain</li>
+    </ul>
+    <h3>Planification souterraine avec Datamine UG</h3>
+    <p>Datamine UG est spécialisé dans la planification de l'exploitation souterraine. J'ai modélisé les galeries d'accès, les chambres d'abattage et les piliers de soutènement, en intégrant les contraintes géomécaniques issues de Phase². Le plan de production a été établi sur 5 ans.</p>
+    <h3>Analyse technico-économique</h3>
+    <p>Le modèle minier n'a de valeur que s'il est économiquement viable. L'étude de faisabilité a intégré les coûts d'exploitation, les investissements en équipements et les projections de prix du sel gemme, aboutissant à un indice de rentabilité positif confirmant l'intérêt du projet.</p>`
+  },
+  b3:{
+    c:'Transition Énergétique',d:'28 Janvier 2026',
+    t:"Le rôle de l'ingénieure minière dans la transition énergétique : enjeux et opportunités au Maroc",
+    h:`<p>Il y a une profonde ironie dans le fait que la transition énergétique — ce grand mouvement vers une économie bas-carbone — dépend massivement des mines. Cobalt, lithium, cuivre, terres rares, phosphates : sans extraction minière intensive, pas d'énergie verte à grande échelle.</p>
+    <h3>Les minerais critiques : au cœur de tout</h3>
+    <p>Selon l'Agence Internationale de l'Énergie, la demande en lithium pourrait être multipliée par 40 d'ici 2040 dans un scénario de neutralité carbone. Le Maroc est idéalement positionné avec ses immenses réserves de phosphates (plus de 70% des réserves mondiales), ses gisements de cobalt (exploités par Managem Group à Bou Azzer) et ses potentialités en cuivre.</p>
+    <ul>
+      <li>Phosphates : matière première pour engrais et batteries LFP (lithium fer phosphate)</li>
+      <li>Cobalt et cuivre : exploités par Managem Group dans des mines emblématiques comme Bou Azzer</li>
+      <li>Potentiel lithium : en cours d'exploration dans plusieurs régions du Royaume</li>
+    </ul>
+    <h3>L'ingénieure minière comme actrice du changement</h3>
+    <p>Notre rôle va bien au-delà de l'extraction. Nous devons développer des méthodes d'exploitation plus respectueuses de l'environnement, réduire l'empreinte eau et carbone des opérations, innover dans la valorisation des rejets miniers. L'audit interne que je pratique chez Managem contribue aussi à cette transition, via l'évaluation rigoureuse des standards ESG.</p>
+    <h3>Un appel à la nouvelle génération</h3>
+    <p>La mine de demain sera digitale, automatisée et durable. Elle aura besoin d'ingénieurs capables de maîtriser à la fois les réalités du terrain et les outils numériques avancés. Les femmes, encore sous-représentées dans notre secteur, ont un rôle crucial pour apporter de nouvelles perspectives et bâtir une industrie minière plus inclusive, innovante et responsable.</p>`
+  }
+};
 
-    function checkVisibleSection() {
-      sections.forEach(section => {
-        const rect = section.getBoundingClientRect();
-        if (rect.top >= 0 && rect.top <= window.innerHeight) {
-          section.classList.add("active");
-          section.classList.remove("dimmed");
-        } else {
-          section.classList.remove("active");
-          section.classList.add("dimmed");
-        }
-      });
-    }
+/* ─── LOADER ─────────────────────────────────────────── */
+let pct=0;
+const ldc=document.getElementById('ldc');
+const li=setInterval(()=>{pct=Math.min(pct+Math.random()*11,99);ldc.textContent=Math.round(pct)+'%';},55);
+window.addEventListener('load',()=>{
+  clearInterval(li);ldc.textContent='100%';
+  setTimeout(()=>{
+    document.getElementById('loader').classList.add('out');
+    document.body.classList.remove('loading');
+    initCounters();
+  },650);
+});
 
-    function toggleSideMenuOnScroll() {
-      if (!header || !sideMenu) return;
-      if (window.scrollY > header.offsetHeight) {
-        sideMenu.classList.add("show");
-      } else {
-        sideMenu.classList.remove("show");
+/* ─── PROGRESS BAR ──────────────────────────────────── */
+window.addEventListener('scroll',()=>{
+  document.getElementById('prog').style.width=
+    (window.scrollY/(document.body.scrollHeight-window.innerHeight)*100)+'%';
+});
+
+/* ─── CUSTOM CURSOR ──────────────────────────────────── */
+const cur=document.getElementById('cur'),curo=document.getElementById('cur-o');
+let mx=0,my=0,ox=0,oy=0;
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.cssText=`left:${mx-3}px;top:${my-3}px`;
+});
+(function animO(){
+  ox+=(mx-ox-16)*.11;oy+=(my-oy-16)*.11;
+  curo.style.cssText=`left:${ox}px;top:${oy}px`;
+  requestAnimationFrame(animO);
+})();
+const interactEls='a,button,.blog-card,.bc,.cert-c,.act-c,.lang-card,.hx,.tag,.cvb,[data-mag],.edu-card,.num-item';
+document.querySelectorAll(interactEls).forEach(el=>{
+  el.addEventListener('mouseenter',()=>curo.classList.add('big'));
+  el.addEventListener('mouseleave',()=>curo.classList.remove('big'));
+});
+document.addEventListener('mousedown',()=>curo.classList.add('inv'));
+document.addEventListener('mouseup',()=>curo.classList.remove('inv'));
+document.addEventListener('mouseleave',()=>curo.classList.add('hidden'));
+document.addEventListener('mouseenter',()=>curo.classList.remove('hidden'));
+
+/* ─── MAGNETIC BUTTONS ───────────────────────────────── */
+document.querySelectorAll('[data-mag]').forEach(b=>{
+  b.addEventListener('mousemove',e=>{
+    const r=b.getBoundingClientRect();
+    b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.38}px,${(e.clientY-r.top-r.height/2)*.38}px)`;
+  });
+  b.addEventListener('mouseleave',()=>{b.style.transform='';});
+});
+
+/* ─── HERO CANVAS PARTICLES ──────────────────────────── */
+const hc=document.getElementById('hc'),ctx=hc.getContext('2d');
+const rsz=()=>{hc.width=window.innerWidth;hc.height=window.innerHeight};
+rsz();window.addEventListener('resize',rsz);
+const pts=Array.from({length:75},()=>({
+  x:Math.random()*hc.width,y:Math.random()*hc.height,
+  vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2,
+  r:Math.random()*1.4+.3,
+  c:Math.random()>.55?'#B8843A':(Math.random()>.5?'#20B39A':'#4E596E'),
+  a:Math.random()*.3+.06
+}));
+let mouseX=0,mouseY=0;
+document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;});
+(function animPts(){
+  ctx.clearRect(0,0,hc.width,hc.height);
+  pts.forEach(p=>{
+    /* subtle mouse repulsion */
+    const dx=p.x-mouseX,dy=p.y-mouseY,dist=Math.hypot(dx,dy);
+    if(dist<120){p.vx+=dx/dist*.015;p.vy+=dy/dist*.015;}
+    /* max speed */
+    const spd=Math.hypot(p.vx,p.vy);if(spd>.35){p.vx=p.vx/spd*.35;p.vy=p.vy/spd*.35;}
+    p.x+=p.vx;p.y+=p.vy;
+    if(p.x<0||p.x>hc.width)p.vx*=-1;if(p.y<0||p.y>hc.height)p.vy*=-1;
+    ctx.save();ctx.globalAlpha=p.a;ctx.fillStyle=p.c;
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();ctx.restore();
+  });
+  /* connection lines */
+  for(let i=0;i<pts.length;i++){
+    for(let j=i+1;j<pts.length;j++){
+      const d=Math.hypot(pts[i].x-pts[j].x,pts[i].y-pts[j].y);
+      if(d<110){
+        ctx.save();ctx.globalAlpha=.03*(1-d/110);ctx.strokeStyle='#B8843A';
+        ctx.lineWidth=.4;ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);
+        ctx.lineTo(pts[j].x,pts[j].y);ctx.stroke();ctx.restore();
       }
     }
+  }
+  requestAnimationFrame(animPts);
+})();
 
-    function handleNavClick(link) {
-      const target = link.getAttribute("data-target");
-      const targetSection = document.getElementById(target);
-      if (!targetSection) return;
+/* ─── GEOLOGICAL STRATA LINES ─────────────────────────── */
+const strata=document.getElementById('strata');
+[13,27,40,55,70,85].forEach((t,i)=>{
+  const l=document.createElement('div');l.className='strata-line';
+  l.style.cssText=`top:${t}%;animation-duration:${16+i*4}s;animation-delay:${-i*3}s;opacity:${.025+i*.004}`;
+  strata.appendChild(l);
+});
 
-      targetSection.scrollIntoView({ behavior: "smooth", block: "center" });
+/* ─── HERO PARALLAX ──────────────────────────────────── */
+document.addEventListener('mousemove',e=>{
+  const x=(e.clientX/window.innerWidth-.5)*16,y=(e.clientY/window.innerHeight-.5)*16;
+  document.getElementById('hexbg').style.transform=`translate(${x*.5}px,${y*.5}px)`;
+  document.querySelectorAll('.fc').forEach((fc,i)=>{
+    const f=.12+i*.06;
+    /* fc-c has its own transform so we skip it */
+    if(!fc.classList.contains('fc-c'))
+      fc.style.transform=`translate(${x*f}px,${y*f}px)`;
+  });
+});
 
-      sections.forEach(section => {
-        if (section === targetSection) {
-          section.classList.add("active");
-          section.classList.remove("dimmed");
-        } else {
-          section.classList.remove("active");
-          section.classList.add("dimmed");
-        }
+/* ─── GLITCH NAME HOVER ──────────────────────────────── */
+const GL='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-·';
+function glitch(el,orig){
+  let it=0;
+  const iv=setInterval(()=>{
+    el.textContent=orig.split('').map((c,i)=>i<it?orig[i]:(c===' '?' ':GL[Math.floor(Math.random()*GL.length)])).join('');
+    it+=.55;if(it>=orig.length){clearInterval(iv);el.textContent=orig;}
+  },28);
+}
+document.querySelector('.l1')?.addEventListener('mouseenter',e=>glitch(e.target,'Fatima-Zahra'));
+document.querySelector('.l2')?.addEventListener('mouseenter',e=>glitch(e.target,'ER-RKABI'));
+
+/* ─── THEME TOGGLE ───────────────────────────────────── */
+document.getElementById('tsw').addEventListener('click',()=>{
+  const h=document.documentElement;
+  h.setAttribute('data-theme',h.getAttribute('data-theme')==='dark'?'light':'dark');
+});
+
+/* ─── HAMBURGER MENU ─────────────────────────────────── */
+const hbg=document.getElementById('hbg'),mobnav=document.getElementById('mobnav');
+hbg.addEventListener('click',()=>{hbg.classList.toggle('o');mobnav.classList.toggle('o');});
+mobnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  hbg.classList.remove('o');mobnav.classList.remove('o');
+}));
+
+/* ─── NAV SCROLL + ACTIVE LINK ───────────────────────── */
+const navEl=document.getElementById('nav'),btt=document.getElementById('btt');
+const secEls=document.querySelectorAll('section[id]'),nlinks=document.querySelectorAll('.nlinks a');
+const secDots=document.querySelectorAll('.sec-dot');
+secDots.forEach(d=>d.addEventListener('click',()=>{
+  document.getElementById(d.dataset.sec)?.scrollIntoView({behavior:'smooth'});
+}));
+window.addEventListener('scroll',()=>{
+  navEl.classList.toggle('sc',scrollY>30);
+  btt.classList.toggle('vis',scrollY>600);
+  const pos=scrollY+100;
+  secEls.forEach(s=>{
+    const active=pos>=s.offsetTop&&pos<s.offsetTop+s.offsetHeight;
+    nlinks.forEach(a=>{if(a.getAttribute('href')==='#'+s.id)a.classList.toggle('on',active);});
+    secDots.forEach(d=>{if(d.dataset.sec===s.id)d.classList.toggle('on',active);});
+  });
+},{ passive:true });
+
+/* ─── INTERSECTION REVEAL ────────────────────────────── */
+const rObs=new IntersectionObserver(ens=>{
+  ens.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rObs.unobserve(e.target);}});
+},{threshold:.08});
+document.querySelectorAll('[data-r]').forEach(el=>rObs.observe(el));
+
+/* ─── SKILL BARS ─────────────────────────────────────── */
+const bObs=new IntersectionObserver(ens=>{
+  ens.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.sbar-fl').forEach(f=>{
+        setTimeout(()=>{f.style.width=f.dataset.w+'%';f.classList.add('lit');},250);
       });
+      bObs.unobserve(e.target);
     }
+  });
+},{threshold:.25});
+document.querySelectorAll('.sg').forEach(g=>bObs.observe(g));
 
-    function attachCardListeners(context = document) {
-      context.querySelectorAll(".card").forEach(card => {
-        if (!card.dataset.bound) {
-          card.dataset.bound = true;
-          card.addEventListener("click", e => {
-            e.stopPropagation();
-            const title = card.querySelector("h3")?.innerText || "";
-            const paras = Array.from(card.querySelectorAll("p")).map(p => `<p>${p.innerText}</p>`).join("");
-            const content = `<h2>${title}</h2>${paras}`;
-
-            document.getElementById("detail-content").innerHTML = content;
-            document.getElementById("formation-detail").style.display = "block";
-            document.body.style.overflow = "hidden";
-          });
-        }
-      });
-    }
-
-    function closeDetail() {
-      document.getElementById("formation-detail").style.display = "none";
-      document.body.style.overflow = "auto";
-    }
-
-    function checkBackdropClick(event) {
-      if (event.target.id === "formation-detail") {
-        closeDetail();
+/* ─── ANIMATED COUNTERS ──────────────────────────────── */
+function animNum(el,end,dur=1300){
+  let s=null,done=false;
+  const fn=t=>{
+    if(done)return;if(!s)s=t;
+    const p=Math.min((t-s)/dur,1),v=Math.round(p*end);
+    el.textContent=v+(p>=1?((end===3&&el.closest('.stats-row'))?'':'+'):'');
+    if(p<1)requestAnimationFrame(fn);else done=true;
+  };requestAnimationFrame(fn);
+}
+function initCounters(){
+  /* hero strip */
+  new IntersectionObserver((ens,ob)=>{
+    ens.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('.cnt-n').forEach(el=>animNum(el,+el.dataset.count,1400));
+        ob.unobserve(e.target);
       }
-    }
-
-    window.addEventListener("scroll", () => {
-      toggleSideMenuOnScroll();
-      checkVisibleSection();
     });
-
-    document.querySelectorAll("nav a, .side-menu a").forEach(link => {
-      link.addEventListener("click", () => handleNavClick(link));
+  },{threshold:.4}).observe(document.querySelector('.numbers-strip')||document.body);
+  /* about stats */
+  new IntersectionObserver((ens,ob)=>{
+    ens.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('[data-count]').forEach(el=>animNum(el,+el.dataset.count,1200));
+        ob.unobserve(e.target);
+      }
     });
-
-    attachCardListeners();
-
-    // Observer pour gérer les cards ajoutées dynamiquement
-    const observer = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        mutation.addedNodes.forEach(node => {
-          if (node.nodeType === 1) {
-            attachCardListeners(node);
-          }
-        });
-      });
+  },{threshold:.4}).observe(document.querySelector('.stats-row')||document.body);
+  /* ap badge */
+  new IntersectionObserver((ens,ob)=>{
+    ens.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.querySelectorAll('[data-count]').forEach(el=>animNum(el,+el.dataset.count,1200));
+        ob.unobserve(e.target);
+      }
     });
+  },{threshold:.5}).observe(document.querySelector('.ap-badge')||document.body);
+}
 
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // Fermer la modal au clic en dehors du contenu
-    window.checkBackdropClick = checkBackdropClick;
-    window.closeDetail = closeDetail;
-
-    toggleSideMenuOnScroll();
-    checkVisibleSection();
+/* ─── 3D CARD TILT ───────────────────────────────────── */
+document.querySelectorAll('.bc,.edu-card,.cert-c,.act-c,.blog-card,.lang-card').forEach(c=>{
+  c.addEventListener('mousemove',e=>{
+    const r=c.getBoundingClientRect();
+    const x=((e.clientX-r.left)/r.width-.5)*10,y=((e.clientY-r.top)/r.height-.5)*10;
+    c.style.transform=`perspective(900px) rotateX(${-y}deg) rotateY(${x}deg) translateY(-5px)`;
   });
+  c.addEventListener('mouseleave',()=>{c.style.transform='';});
+});
 
-  document.querySelectorAll('.toggle-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const card = button.closest('.card');
-      card.classList.toggle('open');
-      button.textContent = card.classList.contains('open') ? 'Moins de détails' : 'Plus de détails';
-    });
-  });
+/* ─── BLOG MODAL ──────────────────────────────────────── */
+function openModal(id){
+  const d=BD[id];if(!d)return;
+  document.getElementById('m-hd-ct').innerHTML=
+    `<div><div class="m-cat">${d.c} · ${d.d}</div><div class="m-ttl">${d.t}</div></div>`;
+  document.getElementById('m-body').innerHTML=d.h;
+  document.getElementById('modal-ovl').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeMdl(e,f){
+  if(f||(e&&e.target===document.getElementById('modal-ovl'))){
+    document.getElementById('modal-ovl').classList.remove('open');
+    document.body.style.overflow='';
+  }
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMdl(null,1);});
 
-  document.getElementById('theme-toggle').addEventListener('click', function() {
-    document.body.classList.toggle('dark-mode');
-    const currentMode = document.body.classList.contains('dark-mode') ? '🌞 Mode Clair' : '🌙 Mode Sombre';
-    this.textContent = currentMode;
-  });
-  document.querySelectorAll('nav a').forEach(link => {
-    link.addEventListener('click', function(e) {
-      document.querySelectorAll('section').forEach(section => {
-        section.classList.remove('active');
-      });
-      const target = this.getAttribute('data-target');
-      document.getElementById(target).classList.add('active');
-    });
-  });
+/* ─── TOAST HELPER ───────────────────────────────────── */
+function showToast(msg,duration=4000){
+  const t=document.getElementById('toast');
+  document.getElementById('toast-msg').textContent=msg;
+  t.classList.add('show');setTimeout(()=>t.classList.remove('show'),duration);
+}
 
+/* ─── CONTACT FORM ───────────────────────────────────── */
+function sendForm(b){
+  const fields=['f-prenom','f-nom','f-email','f-sujet','f-msg'];
+  const vals=fields.map(id=>document.getElementById(id)?.value.trim());
+  if(vals.some(v=>!v)){showToast('⚠️ Merci de remplir tous les champs requis.');return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(vals[2])){showToast('⚠️ Adresse email invalide.');return;}
+  const orig=b.innerHTML;
+  b.innerHTML='<i class="fas fa-circle-notch fa-spin"></i> Envoi en cours...';b.disabled=true;
+  setTimeout(()=>{
+    b.innerHTML='<i class="fas fa-check-circle"></i> Message envoyé !';
+    b.style.background='linear-gradient(135deg,#20B39A,#178A77)';
+    showToast('✅ Votre message a bien été envoyé. Réponse sous 48h !');
+    setTimeout(()=>{b.innerHTML=orig;b.style.background='';b.disabled=false;},5000);
+  },2000);
+}
+
+/* ─── TICKER DUPLICATE (seamless loop) ──────────────── */
+const tk=document.getElementById('ticker');
+if(tk){const cl=tk.cloneNode(true);tk.parentNode.appendChild(cl);}
 </script>
-
-
 </body>
 </html>
